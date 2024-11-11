@@ -10,6 +10,7 @@
           <div class="channel-text">
             <h2>{{ channel?.snippet.channelTitle || 'Canal desconhecido' }}</h2>
             <p class="channel-description">{{ channel?.snippet.description || 'Descrição não disponível.' }}</p>
+            <button class="subscribe-button" @click="subscribeToChannel">Subscrever</button>
           </div>
         </div>
       </div>
@@ -28,7 +29,7 @@
 </template>
 
 <script setup>
-import { defineProps, onUnmounted, watch } from 'vue'
+import { defineProps, getCurrentInstance, onUnmounted, watch } from 'vue'
 
 const emit = defineEmits(['close']);
 
@@ -49,6 +50,21 @@ const props = defineProps({
 
 const closeModal = () => {
   emit('close');
+};
+
+const { proxy } = getCurrentInstance();
+const swal = proxy.$swal;
+
+const subscribeToChannel = () => {
+  swal({
+    toast: true,
+    position: 'top-end',
+    icon: 'success',
+    title: `Você se inscreveu no canal: ${props.channel?.snippet.channelTitle}`,
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+  });
 };
 
 function blockScroll() {
@@ -228,5 +244,22 @@ onUnmounted(() => {
 .video-item:hover .video-thumbnail {
   transform: scale(1.05);
   transition: transform 0.3s ease;
+}
+
+.subscribe-button {
+  margin-top: 5px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe-button:hover {
+  background-color: #0056b3;
 }
 </style>

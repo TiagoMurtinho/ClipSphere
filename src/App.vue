@@ -3,13 +3,15 @@
     <NavBar @search="handleSearch" @updateCategory="updateCategoryHandler" />
       <Sidebar />
       <router-view :categoryId="currentCategoryId" />
+      <BackToTop />
   </div>
 </template>
 
 <script setup>
-import { ref, provide } from 'vue';
+import { ref, provide } from 'vue'
 import Sidebar from './components/SideBar/Sidebar.vue';
 import NavBar from '@/components/NavBar/NavBar.vue'
+import BackToTop from '@/components/Button/BackToTop.vue'
 
 const isSidebarOpen = ref(false);
 const currentCategoryId = ref('all');

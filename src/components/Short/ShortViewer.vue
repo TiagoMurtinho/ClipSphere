@@ -114,7 +114,7 @@ function formatCount(count) {
     return `${(Math.floor(count / 100) / 10).toFixed(1)}K`;
   }
   return count.toString();
-};
+}
 
 const sharePopover = ref(null);
 
