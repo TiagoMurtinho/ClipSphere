@@ -67,7 +67,7 @@ Before installing, ensure you have the following requirements:
    ```bash
    npm run dev
 
-7. Now, open [http://localhost:5173/](http://localhost:5173/) in your browser to view the app.
+7. Now, open `[http://localhost:5173]` in your browser to view the app.
 
 ## License
 
