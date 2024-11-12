@@ -1,30 +1,30 @@
 <template>
-  <div class="video-card" @click="navigateToVideo" tabindex="0">
+  <div class="music-card" @click="navigateToMusic" tabindex="0">
     <div class="thumbnail-container">
-      <img :src="video.snippet.thumbnails.high.url"
-           alt="Video Thumbnail"
-           class="thumbnail"
+      <img
+        :src="music.snippet.thumbnails.high.url"
+        alt="Music Thumbnail"
+        class="thumbnail"
       />
     </div>
-    <div class="video-info">
-      <h3 class="title">{{ video.snippet.title }}</h3>
-      <p class="channel-name">{{ video.snippet.channelTitle }}</p>
-      <p class="time-ago">{{ formatTimeAgo(video.snippet.publishedAt) }}</p>
+    <div class="music-info">
+      <h3 class="title">{{ music.snippet.title }}</h3>
+      <p class="channel-name">{{ music.snippet.channelTitle }}</p>
+      <p class="time-ago">{{ formatTimeAgo(music.snippet.publishedAt) }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
-
 const props = defineProps({
-  video: {
+  music: {
     type: Object,
     required: true,
   },
 });
 
-function navigateToVideo() {
-  console.log('Navegando para o vídeo:', props.video.id);
+function navigateToMusic() {
+  console.log('Navegando para a música:', props.music.id);
 }
 
 function formatTimeAgo(publishedAt) {
@@ -43,7 +43,7 @@ function formatTimeAgo(publishedAt) {
 </script>
 
 <style scoped>
-.video-card {
+.music-card {
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
@@ -51,13 +51,14 @@ function formatTimeAgo(publishedAt) {
   background-color: #fff;
   max-width: 350px;
   max-height: 350px;
+  text-align: center;
 }
 
-.video-card:hover {
+.music-card:hover {
   transform: scale(1.05);
 }
 
-.video-card:hover .thumbnail {
+.music-card:hover .thumbnail {
   animation: rotate-fast 10s linear infinite;
 }
 
@@ -100,12 +101,12 @@ function formatTimeAgo(publishedAt) {
   }
 }
 
-.video-info {
+.music-info {
   margin-top: 5%;
   text-align: left;
 }
 
-.video-info p {
+.music-info p {
   margin: 2px 0;
   line-height: 1.2;
   color: #555;

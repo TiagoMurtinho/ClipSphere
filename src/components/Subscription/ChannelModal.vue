@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import { defineProps, getCurrentInstance, onUnmounted, watch } from 'vue'
+import { getCurrentInstance, onUnmounted, watch } from 'vue'
 
 const emit = defineEmits(['close']);
 

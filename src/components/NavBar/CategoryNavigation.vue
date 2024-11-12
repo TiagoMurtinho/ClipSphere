@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted, defineProps, defineEmits } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 
 const props = defineProps({
   categories: Array,

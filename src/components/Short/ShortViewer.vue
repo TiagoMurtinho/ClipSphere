@@ -58,7 +58,6 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import ShortsCard from './ShortCard.vue';
-import { defineProps } from 'vue';
 import SocialSharePopover from '@/components/Popover/SocialSharePopover.vue'
 
 const props = defineProps({

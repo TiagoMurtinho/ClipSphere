@@ -8,7 +8,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
 import VideoCard from './VideoCard.vue';
 
 const props = defineProps({
@@ -23,13 +22,13 @@ const props = defineProps({
 .video-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  max-width: 1200px;
-  margin: 3% auto 0 0.7%;
-  gap: 1.9%;
+  gap: 10px;
+  justify-content: space-between;
+  margin-left: 5%;
 }
 
-.video-card {
-  flex: 1 1 calc(33.333% - 32px);
+.video-list > * {
+  flex: 1 1 30%;
+  max-width: 30%;
 }
 </style>

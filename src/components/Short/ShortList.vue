@@ -5,7 +5,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
 import ShortsViewer from './ShortViewer.vue';
 
 const props = defineProps({

@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, defineProps, inject, watch } from 'vue';
+import { ref, onMounted, onBeforeUnmount, inject, watch } from 'vue';
 import VideoList from './VideoList.vue';
 import youtube from '../../api';
 import NoResults from '@/components/NoData/NoDataComponent.vue'
@@ -127,11 +127,6 @@ onBeforeUnmount(() => {
 <style scoped>
 .shifted {
   transition: margin-left 0.3s ease;
-  margin-left: 15%;
-}
-
-.loading-indicator {
-  text-align: center;
-  padding: 20px;
+  margin-left: 13%;
 }
 </style>

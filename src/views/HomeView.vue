@@ -6,7 +6,7 @@
 
 <script setup>
 import { defineProps, ref } from 'vue'
-import VideoFetcher from '../components/Video/VideoFetcher.vue';
+import VideoFetcher from '../components/Video/VideoFetch.vue';
 
 const categoryId = ref('all');
 

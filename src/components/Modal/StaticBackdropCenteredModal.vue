@@ -24,7 +24,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import { CButton } from '@coreui/vue/dist/esm/components/button/index.js'
 import {
   CModal,

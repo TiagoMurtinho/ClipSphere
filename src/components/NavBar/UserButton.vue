@@ -18,7 +18,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
 import { cilUser, cilLockLocked } from '@coreui/icons'
 
 defineProps({

@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { defineEmits, inject, onMounted, ref, watch } from 'vue'
+import { inject, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import youtube from '../../api'

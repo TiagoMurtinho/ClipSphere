@@ -33,8 +33,8 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue';
-import { CFormCheck, CFormInput, CFormLabel } from '@coreui/vue/dist/esm/components/form/index.js'
+import { ref } from 'vue';
+import { CFormInput, CFormLabel } from '@coreui/vue/dist/esm/components/form/index.js'
 
 const props = defineProps({
   cilUser: {

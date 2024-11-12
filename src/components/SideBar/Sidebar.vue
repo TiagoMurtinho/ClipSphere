@@ -174,7 +174,7 @@ import {
   cilGamepad,
   cilAmericanFootball, cilMic, cilSettings, cilInfo, cilSpeech
 } from '@coreui/icons'
-import { ref, inject, computed } from 'vue'
+import { inject, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const isSidebarOpen = inject('isSidebarOpen');

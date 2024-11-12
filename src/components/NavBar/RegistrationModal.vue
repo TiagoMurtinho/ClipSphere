@@ -17,7 +17,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
 import ModalComponent from '@/components/Modal/StaticBackdropCenteredModal.vue'
 import RegistrationForm from '@/components/Form/RegistrationForm.vue'
 import { CButton } from '@coreui/vue/dist/esm/components/button/index.js'
