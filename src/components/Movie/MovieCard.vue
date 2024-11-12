@@ -1,30 +1,30 @@
 <template>
-  <div class="video-card" @click="navigateToVideo" tabindex="0">
+  <div class="movie-card" @click="navigateToMovie" tabindex="0">
     <div class="thumbnail-container">
-      <img :src="video.snippet.thumbnails.high.url"
-           alt="Video Thumbnail"
-           class="thumbnail"
+      <img
+        :src="movie.snippet.thumbnails.high.url"
+        alt="Movie Thumbnail"
+        class="thumbnail"
       />
     </div>
-    <div class="video-info">
-      <h3 class="title">{{ video.snippet.title }}</h3>
-      <p class="channel-name">{{ video.snippet.channelTitle }}</p>
-      <p class="time-ago">{{ formatTimeAgo(video.snippet.publishedAt) }}</p>
+    <div class="movie-info">
+      <h3 class="title">{{ movie.snippet.title }}</h3>
+      <p class="channel-name">{{ movie.snippet.channelTitle }}</p>
+      <p class="time-ago">{{ formatTimeAgo(movie.snippet.publishedAt) }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
-
 const props = defineProps({
-  video: {
+  movie: {
     type: Object,
     required: true,
   },
 });
 
-function navigateToVideo() {
-  console.log('Navegando para o vídeo:', props.video.id);
+function navigateToMovie() {
+  console.log('Navegando para o vídeo:', props.movie.id);
 }
 
 function formatTimeAgo(publishedAt) {
@@ -41,7 +41,7 @@ function formatTimeAgo(publishedAt) {
     return `${years} ano${years > 1 ? 's' : ''} atrás`;
   }
   if (months > 0) {
-    return `${months} mês${months > 1 ? 'es' : ''} atrás`;
+    return `${months} mes${months > 1 ? 'es' : ''} atrás`;
   }
   if (days > 0) {
     return `${days} dia${days > 1 ? 's' : ''} atrás`;
@@ -57,31 +57,27 @@ function formatTimeAgo(publishedAt) {
 </script>
 
 <style scoped>
-.video-card {
+.movie-card {
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
-  margin: 3% 16px 16px;
   background-color: #fff;
-  max-width: 350px;
-  max-height: 350px;
+  width: 300px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
 }
 
-.video-card:hover {
-  transform: scale(1.05);
-}
-
-.video-card:hover .thumbnail {
-  animation: rotate-fast 10s linear infinite;
+.movie-card:hover {
+  transform: scale(1.03);
 }
 
 .thumbnail-container {
   position: relative;
   overflow: hidden;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 100%;
+  min-height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,44 +87,22 @@ function formatTimeAgo(publishedAt) {
 .thumbnail {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
-  animation: rotate-slow 60s linear infinite;
+  border-radius: 10px;
 }
 
-@keyframes rotate-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotate-fast {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.video-info {
+.movie-info {
   margin-top: 5%;
-  text-align: left;
 }
 
-.video-info p {
+.movie-info p {
   margin: 2px 0;
   line-height: 1.2;
-  color: #555;
 }
 
 .title {
   font-size: 1.2em;
   font-weight: bold;
   margin: 0;
-  color: #333;
 }
 </style>
