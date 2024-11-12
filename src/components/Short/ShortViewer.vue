@@ -67,7 +67,7 @@ const props = defineProps({
   },
 });
 
-const showButtons = ref(false);
+const showButtons = ref(true);
 const currentIndex = ref(0);
 let direction = 'right';
 
@@ -116,15 +116,18 @@ function formatCount(count) {
 }
 
 const sharePopover = ref(null);
+const isPopoverOpen = ref(false);
 
 const togglePopover = () => {
   if (sharePopover.value) {
+    isPopoverOpen.value = !isPopoverOpen.value;
     sharePopover.value.togglePopover();
   }
 };
 
 const handleClickOutside = (event) => {
   if (
+    isPopoverOpen.value &&
     sharePopover.value &&
     !sharePopover.value.$el.contains(event.target) &&
     !event.target.closest('.share-btn')
