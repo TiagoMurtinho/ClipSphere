@@ -2,7 +2,7 @@
   <div>
     <div class="title" :class="{ 'title-alt': isSidebarOpen }">
       <CIcon :icon="cilFire" size="3xl" class="icon"></CIcon>
-      <h2>Tendências:</h2>
+      <h2 class="title-heading">Tendências:</h2>
     </div>
     <TrendingFetch>
       <template #default="{ trendingVideos }">
@@ -26,11 +26,24 @@ const isSidebarOpen = inject('isSidebarOpen');
 .title {
   display: flex;
   align-items: center;
-  margin: 8% 8% -15px 8%;
-  transition: margin-left 0.3s ease;
+  margin: 8% 9.5% -15px 9.5%;
+  transition: margin-left 0.3s ease-in-out;
+  position: relative;
+  padding-bottom: 8px;
 }
 
-.title h2 {
+.title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #d3d3d3;
+  transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.title-heading {
   margin: 4px 8px 0 10px;
   font-size: 1.8rem;
   font-weight: bold;
@@ -42,7 +55,11 @@ const isSidebarOpen = inject('isSidebarOpen');
 }
 
 .title-alt {
-  margin-left: 26%;
-  transition: margin-left 0.3s ease;
+  margin-left: 18%;
+}
+
+.title-alt::after {
+  left: 0;
+  width: calc(100% + 11%);
 }
 </style>

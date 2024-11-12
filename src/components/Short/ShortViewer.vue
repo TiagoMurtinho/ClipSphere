@@ -43,11 +43,11 @@
 
     </div>
     <div class="controls">
-      <button @click="previousVideo" :disabled="currentIndex === 0">
+      <button v-if="currentIndex > 0" @click="previousVideo">
         <span class="arrow1">&#8678;</span>
         <span class="text1">Anterior</span>
       </button>
-      <button @click="nextVideo" :disabled="currentIndex === shorts.length - 1">
+      <button v-if="currentIndex < shorts.length - 1" @click="nextVideo">
         <span class="text2">Próximo</span>
         <span class="arrow2">&#8680;</span>
       </button>
@@ -169,7 +169,7 @@ onBeforeUnmount(() => {
 .interaction-buttons {
   position: absolute;
   right: 34%;
-  bottom: 7%;
+  bottom: 5.5%;
   display: flex;
   flex-direction: column;
   gap: 10px;

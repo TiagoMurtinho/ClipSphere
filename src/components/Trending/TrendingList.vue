@@ -29,16 +29,15 @@ const isSidebarOpen = inject('isSidebarOpen');
 .trending-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   justify-content: center;
   margin-top: 5%;
   margin-bottom: 5%;
-  transition: all 0.2s ease-in-out;
+  transition: margin-left 0.3s ease-in-out;
 }
 
 .trending-list.shifted {
-  margin-left: 17.5%;
-  gap: 50px;
-  transition: all 0.2s ease-in-out;
+  margin-left: 16%;
+  transition: margin-left 0.3s ease-in-out;
 }
 </style>
