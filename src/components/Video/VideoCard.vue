@@ -61,7 +61,6 @@ function formatTimeAgo(publishedAt) {
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
-  margin: 3% 16px 16px;
   background-color: #fff;
   max-width: 350px;
   max-height: 350px;

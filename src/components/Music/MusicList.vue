@@ -33,12 +33,12 @@ defineProps({
 }
 
 .music-list.shifted {
-  margin-left: 18%;
+  margin-left: 17%;
   transition: margin-left 0.3s ease-in-out;
 }
 
 .music-list > * {
-  flex: 1 1 30%;
-  max-width: 30%;
+  flex: 1 1 21%;
+  max-width: 21%;
 }
 </style>

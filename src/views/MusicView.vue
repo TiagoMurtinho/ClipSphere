@@ -50,11 +50,11 @@ const isSidebarOpen = inject('isSidebarOpen');
 }
 
 .title-alt {
-  margin-left: 19%;
+  margin-left: 18%;
 }
 
 .title-alt::after {
   left: 0;
-  width: calc(100% + 2%);
+  width: calc(100% + 5%);
 }
 </style>

@@ -1,9 +1,7 @@
 <template>
-  <div :class="{ 'shifted': isSidebarOpen }">
-    <VideoList v-if="videos && videos.length > 0" :videos="videos" />
-    <NoResults v-else />
-    <VueSpinnerBars v-if="loading" size="40" color="blue" />
-  </div>
+  <VideoList v-if="videos && videos.length > 0" :videos="videos" />
+  <NoResults v-else />
+  <VueSpinnerBars v-if="loading" size="40" color="blue" />
 </template>
 
 <script setup>
@@ -19,8 +17,6 @@ const props = defineProps({
     default: 'all'
   }
 });
-
-const isSidebarOpen = inject('isSidebarOpen');
 
 const videos = ref([]);
 const pageToken = ref(null);
@@ -123,10 +119,3 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll);
 });
 </script>
-
-<style scoped>
-.shifted {
-  transition: margin-left 0.3s ease;
-  margin-left: 13%;
-}
-</style>
