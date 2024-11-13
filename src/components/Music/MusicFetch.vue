@@ -46,7 +46,7 @@ const fetchMusic = async () => {
         part: 'snippet,statistics',
         chart: 'mostPopular',
         videoCategoryId: '10',
-        maxResults: 25,
+        maxResults: 24,
       },
     });
 
