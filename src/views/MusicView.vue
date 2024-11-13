@@ -21,7 +21,7 @@ const isSidebarOpen = inject('isSidebarOpen');
 .title {
   display: flex;
   align-items: center;
-  margin: 8% 5% -15px 5%;
+  margin: 8% 6% -15px 6%;
   transition: margin-left 0.3s ease-in-out;
   position: relative;
   padding-bottom: 8px;
