@@ -1,6 +1,9 @@
 <template>
   <div class="gaming-card">
-    <img :src="video.snippet.thumbnails.medium.url" :alt="video.snippet.title" class="gaming-thumbnail" />
+    <img :src="video.snippet.thumbnails.medium.url"
+         :alt="video.snippet.title"
+         class="gaming-thumbnail"
+    />
     <div class="gaming-info">
       <h3>{{ video.snippet.title }}</h3>
       <p>{{ video.snippet.channelTitle }}</p>

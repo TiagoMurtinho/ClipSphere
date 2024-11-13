@@ -30,19 +30,14 @@ const isSidebarOpen = inject('isSidebarOpen');
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: space-between;
-  margin-left: 5%;
+  justify-content: center;
   margin-top: 5%;
+  margin-bottom: 5%;
   transition: margin-left 0.3s ease-in-out;
 }
 
 .video-list.shifted {
-  margin-left: 18%;
+  margin-left: 16%;
   transition: margin-left 0.3s ease-in-out;
-}
-
-.video-list > * {
-  flex: 1 1 23%;
-  max-width: 23%;
 }
 </style>

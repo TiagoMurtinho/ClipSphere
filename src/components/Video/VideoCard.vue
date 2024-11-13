@@ -1,11 +1,9 @@
 <template>
-  <div class="video-card" @click="navigateToVideo" tabindex="0">
-    <div class="thumbnail-container">
-      <img :src="video.snippet.thumbnails.high.url"
-           alt="Video Thumbnail"
-           class="thumbnail"
-      />
-    </div>
+  <div class="video-card">
+    <img :src="video.snippet.thumbnails.medium.url"
+         :alt="video.snippet.title"
+         class="video-thumbnail"
+    />
     <div class="video-info">
       <h3 class="title">{{ video.snippet.title }}</h3>
       <p class="channel-name">{{ video.snippet.channelTitle }}</p>
@@ -22,10 +20,6 @@ const props = defineProps({
     required: true,
   },
 });
-
-function navigateToVideo() {
-  console.log('Navegando para o vídeo:', props.video.id);
-}
 
 function formatTimeAgo(publishedAt) {
   const date = new Date(publishedAt);
@@ -58,76 +52,48 @@ function formatTimeAgo(publishedAt) {
 
 <style scoped>
 .video-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
-  background-color: #fff;
-  max-width: 350px;
-  max-height: 350px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .video-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
 }
 
-.video-card:hover .thumbnail {
-  animation: rotate-fast 10s linear infinite;
-}
-
-.thumbnail-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3% auto 0;
-}
-
-.thumbnail {
+.video-thumbnail {
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
+  height: 200px;
   object-fit: cover;
-  animation: rotate-slow 60s linear infinite;
-}
-
-@keyframes rotate-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotate-fast {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .video-info {
-  margin-top: 5%;
-  text-align: left;
+  padding: 10px;
+  flex: 1;
+}
+
+.video-info h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .video-info p {
-  margin: 2px 0;
-  line-height: 1.2;
+  margin: 5px 0;
   color: #555;
-}
-
-.title {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 0;
-  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
