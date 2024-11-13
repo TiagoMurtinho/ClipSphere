@@ -1,61 +1,77 @@
 <template>
   <div class="shorts-viewer">
-    <div class="video-container">
+    <div class="short-container">
       <transition
         name="slide-fade"
         @before-enter="beforeEnter"
         @enter="enter"
         @leave="leave"
       >
-        <ShortsCard :video="shorts[currentIndex]" :key="currentIndex" class="video-card" />
+        <ShortsCard
+          :video="shorts[currentIndex]"
+          :key="currentIndex"
+          class="short-card"
+        />
       </transition>
     </div>
     <div
-      class="interaction-buttons"
+      class="short-interaction-buttons"
       v-if="showButtons"
-      :class="{ 'interaction-fade': showButtons }"
+      :class="{ 'short-interaction-fade': showButtons }"
     >
       <div>
-        <button class="like-btn">
+        <button class="short-button short-like-btn">
           <i class="bi bi-hand-thumbs-up-fill"></i>
         </button>
-        <span class="count">{{ formatCount(shorts[currentIndex]?.statistics?.likeCount || 0) }}</span>
+        <span class="short-count">{{ formatCount(shorts[currentIndex]?.statistics?.likeCount || 0) }}</span>
       </div>
       <div>
-        <button class="dislike-btn">
+        <button class="short-button short-dislike-btn">
           <i class="bi bi-hand-thumbs-down-fill"></i>
         </button>
-        <span class="count">Não Gosto</span>
+        <span class="short-count">Não Gosto</span>
       </div>
       <div>
-        <button class="comment-btn">
+        <button class="short-button short-comment-btn">
           <i class="bi bi-chat-dots-fill"></i>
         </button>
-        <span class="count">{{ formatCount(shorts[currentIndex]?.statistics?.commentCount || 0) }}</span>
+        <span class="short-count">{{ formatCount(shorts[currentIndex]?.statistics?.commentCount || 0) }}</span>
       </div>
       <div>
-        <button class="share-btn" @click="togglePopover">
+        <button
+          class="short-button short-share-btn"
+          @click="togglePopover"
+        >
           <i class="bi bi-share-fill"></i>
         </button>
-        <span class="count">Partilhar</span>
+        <span class="short-count">Partilhar</span>
         <SocialSharePopover ref="sharePopover" />
       </div>
 
     </div>
-    <div class="controls">
-      <button v-if="currentIndex > 0" @click="previousVideo">
-        <span class="arrow1">&#8678;</span>
-        <span class="text1">Anterior</span>
+    <div class="short-controls">
+      <button
+        class="short-button"
+        v-if="currentIndex > 0"
+        @click="previousVideo"
+      >
+        <span class="short-arrow1">&#8678;</span>
+        <span class="short-text1">Anterior</span>
       </button>
-      <button v-if="currentIndex < shorts.length - 1" @click="nextVideo">
-        <span class="text2">Próximo</span>
-        <span class="arrow2">&#8680;</span>
+      <button
+        class="short-button"
+        v-if="currentIndex < shorts.length - 1"
+        @click="nextVideo"
+      >
+        <span class="short-text2">Próximo</span>
+        <span class="short-arrow2">&#8680;</span>
       </button>
     </div>
   </div>
 </template>
 
 <script setup>
+import './Short.css'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import ShortsCard from './ShortCard.vue';
 import SocialSharePopover from '@/components/Popover/SocialSharePopover.vue'
@@ -144,116 +160,3 @@ onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside);
 });
 </script>
-
-<style scoped>
-.shorts-viewer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.video-container {
-  position: relative;
-}
-
-.controls {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.interaction-buttons {
-  position: absolute;
-  right: 34%;
-  bottom: 5.5%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.interaction-fade {
-  opacity: 1;
-}
-
-.interaction-buttons button {
-  background-color: #b6b6b6;
-  width: 50px;
-  height: 50px;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: -6px;
-}
-
-.interaction-buttons button:hover {
-  background-color: #005bb5;
-}
-
-button {
-  width: 65px;
-  height: 65px;
-  background-color: #0073e6;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-button:hover:not(:disabled) {
-  background-color: #005bb5;
-}
-
-.arrow1 {
-  font-size: 1.5rem;
-  margin-bottom: -7px;
-}
-
-.text1 {
-  font-size: 1rem;
-  margin-top: -7px;
-}
-
-.arrow2 {
-  font-size: 1.5rem;
-  margin-top: -7px;
-}
-
-.text2 {
-  font-size: 1rem;
-  margin-bottom: -7px;
-  margin-top: 15px;
-}
-
-.interaction-buttons > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 7px;
-}
-
-.interaction-buttons .count {
-  font-size: 0.9rem;
-  color: #333;
-  text-align: center;
-}
-</style>

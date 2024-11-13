@@ -4,11 +4,16 @@
     class="music-list"
     :class="{ shifted: isSidebarOpen }"
   >
-    <MusicCard v-for="(music, idx) in musicList" :key="idx" :music="music" />
+    <MusicCard
+      v-for="(music, idx) in musicList"
+      :key="idx"
+      :music="music"
+    />
   </div>
 </template>
 
 <script setup>
+
 import MusicCard from './MusicCard.vue';
 import { inject } from 'vue'
 
@@ -21,24 +26,3 @@ defineProps({
   },
 });
 </script>
-
-<style scoped>
-.music-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: space-between;
-  margin-left: 5%;
-  transition: margin-left 0.3s ease-in-out;
-}
-
-.music-list.shifted {
-  margin-left: 17%;
-  transition: margin-left 0.3s ease-in-out;
-}
-
-.music-list > * {
-  flex: 1 1 21%;
-  max-width: 21%;
-}
-</style>

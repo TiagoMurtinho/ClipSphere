@@ -2,9 +2,12 @@
   <form @submit.prevent="handleRegistration">
     <div class="mb-3">
       <CFormLabel for="username">Nome de Utilizador</CFormLabel>
-      <div class="input-group">
-        <div class="icon-container">
-          <CIcon :icon="cilUser" class="input-icon" />
+      <div class="register-input-group">
+        <div class="register-icon-container">
+          <CIcon
+            :icon="cilUser"
+            class="register-input-icon"
+          />
         </div>
         <CFormInput
           id="username"
@@ -16,9 +19,12 @@
     </div>
     <div class="mb-3">
       <CFormLabel for="password">Senha</CFormLabel>
-      <div class="input-group">
-        <div class="icon-container">
-          <CIcon :icon="cilLockLocked" class="input-icon" />
+      <div class="register-input-group">
+        <div class="register-icon-container">
+          <CIcon
+            :icon="cilLockLocked"
+            class="register-input-icon"
+          />
         </div>
         <CFormInput
           type="password"
@@ -33,6 +39,7 @@
 </template>
 
 <script setup>
+import './LoginRegisterForm.css'
 import { ref } from 'vue';
 import { CFormInput, CFormLabel } from '@coreui/vue/dist/esm/components/form/index.js'
 
@@ -59,25 +66,3 @@ const handleRegistration = () => {
   });
 };
 </script>
-
-<style scoped>
-.input-group {
-  display: flex;
-  align-items: center;
-}
-
-.input-icon {
-  color: #000000;
-  font-size: 1.2rem;
-}
-
-.icon-container {
-  background-color: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 38px;
-  border-radius: 6px;
-}
-</style>

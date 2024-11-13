@@ -1,8 +1,18 @@
 <template>
   <div>
-    <MusicList v-if="musicList && musicList.length > 0" :musicList="musicList" />
-    <NoResults v-else message="Nenhuma música encontrada!" />
-    <VueSpinnerBars v-if="loading" size="40" color="blue" />
+    <MusicList
+      v-if="musicList && musicList.length > 0"
+      :musicList="musicList"
+    />
+    <NoResults
+      v-else
+      message="Nenhuma música encontrada!"
+    />
+    <VueSpinnerBars
+      v-if="loading"
+      size="40"
+      color="blue"
+    />
   </div>
 </template>
 

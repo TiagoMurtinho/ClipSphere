@@ -1,0 +1,148 @@
+.shorts-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.short-thumbnail {
+    width: 350px;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+    margin-top: 7%;
+    border-radius: 15px;
+}
+.short-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.short-info {
+    padding: 8px;
+    text-align: center;
+}
+.short-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.shorts-list {
+    display: flex;
+    justify-content: center;
+}
+
+.shorts-viewer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.short-container {
+    position: relative;
+}
+
+.short-controls {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.short-interaction-buttons {
+    position: absolute;
+    right: 34%;
+    bottom: 5.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.short-interaction-fade {
+    opacity: 1;
+}
+
+.short-interaction-buttons button {
+    background-color: #b6b6b6;
+    width: 50px;
+    height: 50px;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -6px;
+}
+
+.short-interaction-buttons button:hover {
+    background-color: #005bb5;
+}
+
+.short-button {
+    width: 65px;
+    height: 65px;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.short-button:hover:not(:disabled) {
+    background-color: #005bb5;
+}
+
+.short-arrow1 {
+    font-size: 1.5rem;
+    margin-bottom: -7px;
+}
+
+.short-text1 {
+    font-size: 1rem;
+    margin-top: -7px;
+}
+
+.short-arrow2 {
+    font-size: 1.5rem;
+    margin-top: -7px;
+}
+
+.short-text2 {
+    font-size: 1rem;
+    margin-bottom: -7px;
+    margin-top: 15px;
+}
+
+.short-interaction-buttons > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+}
+
+.short-interaction-buttons .short-count {
+    font-size: 0.9rem;
+    color: #333;
+    text-align: center;
+}

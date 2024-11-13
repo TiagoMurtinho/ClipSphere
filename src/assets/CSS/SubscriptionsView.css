@@ -1,0 +1,38 @@
+.subscription-title {
+    display: flex;
+    align-items: center;
+    margin: 8% 6.5% -15px 6.5%;
+    transition: margin-left 0.3s ease;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.subscription-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #d3d3d3;
+    transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.subscription-title-heading {
+    margin: 4px 8px 0 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.heading-icon {
+    color: #737373;
+}
+
+.subscription-title-alt {
+    margin-left: 20%;
+}
+
+.subscription-title-alt::after {
+    left: 0;
+}

@@ -1,7 +1,18 @@
 <template>
   <div>
-    <VueSpinnerBars v-if="loading" size="40" color="blue" />
-    <SubscriptionList :channels="channels" />
+    <SubscriptionList
+      v-if="channels && channels.length > 0"
+      :channels="channels"
+    />
+    <NoResults
+      v-else
+      message="Nenhum canal encontrado!"
+    />
+    <VueSpinnerBars
+      v-if="loading"
+      size="40"
+      color="blue" />
+
   </div>
 </template>
 
@@ -10,6 +21,7 @@ import { ref, onMounted } from 'vue';
 import SubscriptionList from './SubscriptionList.vue';
 import youtube from '../../api';
 import { VueSpinnerBars } from 'vue3-spinners'
+import NoResults from '@/components/NoData/NoDataComponent.vue'
 
 const channels = ref([]);
 const loading = ref(true);
@@ -55,14 +67,3 @@ onMounted(() => {
   fetchPopularChannels();
 });
 </script>
-
-<style scoped>
-h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-div {
-  margin-bottom: 20px;
-}
-</style>

@@ -1,17 +1,23 @@
 <template>
-  <div  v-if="video && video.snippet"  class="shorts-card">
-
-    <div class="thumbnail">
-      <img :src="video.snippet.thumbnails.high.url" alt="Short thumbnail" />
+  <div
+    v-if="video && video.snippet"
+    class="shorts-card"
+  >
+    <div class="short-thumbnail">
+      <img
+        :src="video.snippet.thumbnails.medium.url"
+        alt="Short thumbnail"
+      />
     </div>
 
-    <div class="info">
-      <h3 class="title">{{ truncatedTitle }}</h3>
+    <div class="short-info">
+      <h3 class="short-title">{{ truncatedTitle }}</h3>
     </div>
   </div>
 </template>
 
 <script setup>
+import './Short.css'
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -29,43 +35,3 @@ const truncatedTitle = computed(() => {
 });
 
 </script>
-
-<style scoped>
-.shorts-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.thumbnail {
-  width: 350px;
-  height: 600px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #ddd;
-  margin-top: 7%;
-  border-radius: 15px;
-}
-.thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.info {
-  padding: 8px;
-  text-align: center;
-}
-.title {
-  font-size: 0.9rem;
-  font-weight: bold;
-  margin: 5px 0;
-  color: #333;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-</style>

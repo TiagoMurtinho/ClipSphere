@@ -8,8 +8,13 @@
       :class="['sidebar', { 'sidebar-closed': !isSidebarOpen }]"
       :unfoldable="true"
     >
-      <CSidebarHeader class="border-bottom" :class="sidebarBrandClass">
-        <CSidebarBrand class="sidebar-brand">
+      <CSidebarHeader
+        class="border-bottom"
+        :class="sidebarBrandClass"
+      >
+        <CSidebarBrand
+          class="sidebar-brand"
+        >
           <img
             src="../../assets/ClipSphereIcon.png"
             alt="ClipSphere Logo"
@@ -17,7 +22,10 @@
           />
         </CSidebarBrand>
       </CSidebarHeader>
-      <CSidebarNav class="sidebar-nav" :class="{ 'show-scroll': isSidebarOpen }">
+      <CSidebarNav
+        class="sidebar-nav"
+        :class="{ 'show-scroll': isSidebarOpen }"
+      >
         <CNavItem
           href="#"
           @click="navigateTo('/')"
@@ -162,6 +170,7 @@
 </template>
 
 <script setup>
+import './Sidebar.css'
 import { CSidebar, CSidebarHeader, CSidebarBrand, CSidebarNav, CNavTitle, CNavItem } from '@coreui/vue';
 import { CIcon } from '@coreui/icons-vue';
 import {
@@ -221,70 +230,3 @@ const sidebarLogoClass = computed(() => ({
   'sidebar-logo-alt': !isHomeRoute.value
 }));
 </script>
-
-<style scoped>
-.sidebar {
-  height: 100vh;
-  background-color: rgba(52, 58, 64, 0);
-  color: white;
-  transition: transform 0.3s ease;
-}
-
-.sidebar-brand {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 123px;
-  transition: height 0.3s ease;
-}
-
-.sidebar-brand-alt {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-  transition: height 0.3s ease;
-}
-
-.sidebar-logo {
-  max-width: 60%;
-  height: auto;
-  transition: max-width 0.3s ease;
-}
-
-.sidebar-logo-alt {
-  max-width: 35%;
-  height: auto;
-  transition: max-width 0.3s ease;
-}
-
-.sidebar-logo-closed {
-  max-width: 100%;
-}
-
-.sidebar-nav {
-  overflow-y: hidden;
-  padding-top: 5px;
-}
-
-.sidebar-nav.show-scroll {
-  overflow-y: auto;
-}
-
-.sidebar-nav::-webkit-scrollbar {
-  display: none;
-}
-
-.sidebar-nav.show-scroll::-webkit-scrollbar {
-  display: block;
-}
-
-.sidebar-nav {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.sidebar-nav.show-scroll {
-  scrollbar-width: thin;
-}
-</style>

@@ -1,0 +1,39 @@
+.movie-title {
+    display: flex;
+    align-items: center;
+    margin: 8% 10% -15px 10%;
+    transition: margin-left 0.3s ease-in-out;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.movie-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #d3d3d3;
+    transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.movie-title-heading {
+    margin: 4px 8px 0 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.heading-icon {
+    color: #737373;
+}
+
+.movie-title-alt {
+    margin-left: 18%;
+}
+
+.movie-title-alt::after {
+    left: 0;
+    width: calc(100% + 2%);
+}

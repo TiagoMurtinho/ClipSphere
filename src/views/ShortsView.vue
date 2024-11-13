@@ -5,11 +5,6 @@
 </template>
 
 <script setup>
+import '../assets/CSS/ShortsView.css'
 import ShortsFetcher from '@/components/Short/ShortFetcher.vue';
 </script>
-
-<style scoped>
-.short {
-  margin-top: 4%;
-}
-</style>

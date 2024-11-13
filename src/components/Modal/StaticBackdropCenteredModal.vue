@@ -15,8 +15,18 @@
       </CModalBody>
       <CModalFooter>
         <slot name="footer">
-          <CButton color="secondary" @click="closeModal">Fechar</CButton>
-          <CButton color="primary" @click="confirm">Salvar mudanças</CButton>
+          <CButton
+            color="secondary"
+            @click="closeModal"
+          >
+            Fechar
+          </CButton>
+          <CButton
+            color="primary"
+            @click="confirm"
+          >
+            Salvar mudanças
+          </CButton>
         </slot>
       </CModalFooter>
     </CModal>
@@ -54,6 +64,3 @@ const confirm = () => {
   emit('confirm');
 };
 </script>
-
-<style scoped>
-</style>

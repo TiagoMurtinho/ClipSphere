@@ -1,8 +1,18 @@
 <template>
   <div>
-    <VueSpinnerBars v-if="loading" size="40" color="blue" />
-    <ShortsList v-if="shorts && shorts.length > 0" :shorts="shorts" />
-    <NoResults v-else message="Nenhum short encontrado!"/>
+    <VueSpinnerBars
+      v-if="loading"
+      size="40"
+      color="blue"
+    />
+    <ShortsList
+      v-if="shorts && shorts.length > 0"
+      :shorts="shorts"
+    />
+    <NoResults
+      v-else
+      message="Nenhum short encontrado!"
+    />
   </div>
 </template>
 

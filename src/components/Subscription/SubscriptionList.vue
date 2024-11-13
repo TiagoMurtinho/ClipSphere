@@ -1,17 +1,23 @@
 <template>
   <div class="subscription-list">
     <div v-if="channels && channels.length > 0"
-         class="channel-grid"
+         class="subscription-list-channel-grid"
          :class="{ shifted: isSidebarOpen }"
     >
       <div v-for="(channel, idx) in channels"
-           :key="idx" class="channel-item"
+           :key="idx"
+           class="subscription-list-channel-item"
            @click="openChannelModal(channel)"
       >
-        <SubscriptionCard :channel="channel" />
+        <SubscriptionCard
+          :channel="channel"
+        />
       </div>
     </div>
-    <NoResults v-else message="Nenhum canal encontrado!" />
+    <NoResults
+      v-else
+      message="Nenhum canal encontrado!"
+    />
     <ChannelModal
       v-if="selectedChannel"
       :visible="isModalVisible"
@@ -23,6 +29,7 @@
 </template>
 
 <script setup>
+import './Subscription.css'
 import { inject, ref } from 'vue'
 import SubscriptionCard from './SubscriptionCard.vue';
 import NoResults from '@/components/NoData/NoDataComponent.vue';
@@ -83,23 +90,3 @@ async function fetchChannelVideos(channelId) {
   }
 }
 </script>
-
-<style scoped>
-.subscription-list {
-  margin-top: 4%;
-}
-
-.channel-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-left: 6%;
-  margin-right: 6%;
-  transition: margin-left 0.3s ease, margin-right 0.3s ease;
-}
-
-.channel-grid.shifted {
-  margin-left: 20%;
-  margin-right: 6%;
-}
-</style>

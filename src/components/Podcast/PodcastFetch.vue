@@ -1,19 +1,29 @@
 <template>
   <div>
-      <VueSpinnerBars size="50" color="#000" />
-    <div>
-      <PodcastList :videos="videos" />
-      <NoResults v-if="videos.length === 0" />
-    </div>
+    <PodcastList
+      v-if="videos && videos.length > 0"
+      :videos="videos"
+    />
+    <NoResults
+      v-else
+      message="Nenhum podcast encontrado!"
+    />
+    <VueSpinnerBars
+      v-if="loading"
+      size="50"
+      color="#000"
+    />
   </div>
 </template>
 
 <script setup>
+import './Podcast.css'
 import { ref, onMounted } from 'vue';
 import PodcastList from './PodcastList.vue';
 import NoResults from '@/components/NoData/NoDataComponent.vue';
 import youtube from '../../api';
 import { VueSpinnerBars } from 'vue3-spinners';
+import GamingList from '@/components/Gaming/GamingList.vue'
 
 
 const videos = ref([]);

@@ -1,10 +1,13 @@
 <template>
   <div class="home-view">
-    <VideoFetcher :categoryId="categoryId" />
+    <VideoFetcher
+      :categoryId="categoryId"
+    />
   </div>
 </template>
 
 <script setup>
+import '@/assets/CSS/HomeView.css'
 import VideoFetcher from '../components/Video/VideoFetch.vue';
 
 const props = defineProps({
@@ -14,15 +17,3 @@ const props = defineProps({
   }
 });
 </script>
-
-<style>
-.home-view {
-  display: flex;
-  margin-top: 80px;
-  padding: 16px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  height: calc(100vh - 80px);
-}
-</style>

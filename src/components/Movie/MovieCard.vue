@@ -1,31 +1,28 @@
 <template>
-  <div class="movie-card" @click="navigateToMovie" tabindex="0">
-    <div class="thumbnail-container">
+  <div class="movie-card">
+    <div class="movie-card-thumbnail-container">
       <img
-        :src="movie.snippet.thumbnails.high.url"
+        :src="movie.snippet.thumbnails.medium.url"
         alt="Movie Thumbnail"
-        class="thumbnail"
+        class="movie-card-thumbnail"
       />
     </div>
-    <div class="movie-info">
-      <h3 class="title">{{ movie.snippet.title }}</h3>
-      <p class="channel-name">{{ movie.snippet.channelTitle }}</p>
-      <p class="time-ago">{{ formatTimeAgo(movie.snippet.publishedAt) }}</p>
+    <div class="movie-card-info">
+      <h3 class="movie-card-title">{{ movie.snippet.title }}</h3>
+      <p class="movie-card-channel-name">{{ movie.snippet.channelTitle }}</p>
+      <p class="movie-card-time-ago">{{ formatTimeAgo(movie.snippet.publishedAt) }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
+import './Movie.css'
 const props = defineProps({
   movie: {
     type: Object,
     required: true,
   },
 });
-
-function navigateToMovie() {
-  console.log('Navegando para o vídeo:', props.movie.id);
-}
 
 function formatTimeAgo(publishedAt) {
   const date = new Date(publishedAt);
@@ -55,54 +52,3 @@ function formatTimeAgo(publishedAt) {
   return 'Agora mesmo';
 }
 </script>
-
-<style scoped>
-.movie-card {
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-  background-color: #fff;
-  width: 300px;
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-}
-
-.movie-card:hover {
-  transform: scale(1.03);
-}
-
-.thumbnail-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  width: 100%;
-  min-height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3% auto 0;
-}
-
-.thumbnail {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.movie-info {
-  margin-top: 5%;
-}
-
-.movie-info p {
-  margin: 2px 0;
-  line-height: 1.2;
-}
-
-.title {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 0;
-}
-</style>

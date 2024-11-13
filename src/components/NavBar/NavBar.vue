@@ -33,6 +33,7 @@
 </template>
 
 <script setup>
+import './NavBar.css'
 import { inject, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { cilLockLocked, cilUser } from '@coreui/icons'
@@ -181,40 +182,3 @@ onMounted(() => {
   emit('updateCategory', 'all' );
 });
 </script>
-
-<style scoped>
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 11px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: transform 0.2s ease;
-}
-
-.navbar-pushed {
-  transform: translateX(200px);
-  width: 87%;
-  padding: 0.8%;
-}
-
-.search-bar-container {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.1%;
-  transition: all 0.3s ease;
-}
-
-.search-bar-container-alt {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-</style>

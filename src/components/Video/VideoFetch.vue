@@ -1,8 +1,18 @@
 <template>
   <div>
-    <VideoList v-if="videos.length > 0" :videos="videos" />
-    <NoResults v-else />
-    <VueSpinnerBars v-if="loading" size="40" color="blue" />
+    <VideoList
+      v-if="videos.length > 0"
+      :videos="videos"
+    />
+    <NoResults
+      v-else
+      message="Nenhum vídeo encontrado"
+    />
+    <VueSpinnerBars
+      v-if="loading"
+      size="40"
+      color="blue"
+    />
   </div>
 </template>
 

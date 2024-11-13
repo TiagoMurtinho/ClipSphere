@@ -1,0 +1,39 @@
+.trending-title {
+    display: flex;
+    align-items: center;
+    margin: 8% 9.5% -15px 9.5%;
+    transition: margin-left 0.3s ease-in-out;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.trending-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #d3d3d3;
+    transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.trending-title-heading {
+    margin: 4px 8px 0 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.heading-icon {
+    color: #737373;
+}
+
+.trending-title-alt {
+    margin-left: 18%;
+}
+
+.trending-title-alt::after {
+    left: 0;
+    width: calc(100% + 11%);
+}

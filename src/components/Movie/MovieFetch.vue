@@ -1,12 +1,18 @@
 <template>
   <div>
-    <div v-if="loading" class="loading-container">
-      <VueSpinnerBars size="50" color="#000" />
-    </div>
-    <div v-else>
-      <MovieList :movieList="movieList" />
-      <NoResults v-if="movieList.length === 0" />
-    </div>
+    <MovieList
+      v-if="movieList && movieList.length > 0"
+      :movieList="movieList"
+    />
+    <NoResults
+      v-else
+      message="Nenhum filme encontrado!"
+    />
+    <VueSpinnerBars
+      v-if="loading"
+      size="50"
+      color="#000"
+    />
   </div>
 </template>
 
@@ -56,12 +62,3 @@ const fetchMovies = async () => {
 
 onMounted(fetchMovies);
 </script>
-
-<style scoped>
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-</style>

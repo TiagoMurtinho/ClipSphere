@@ -10,8 +10,18 @@
       @register="registerUser"
     />
     <template #footer>
-      <CButton color="secondary" @click="openLoginModal">Utilizador existente</CButton>
-      <CButton color="primary" @click="registerUser">Registrar</CButton>
+      <CButton
+        color="secondary"
+        @click="openLoginModal"
+      >
+        Utilizador existente
+      </CButton>
+      <CButton
+        color="primary"
+        @click="registerUser"
+      >
+        Registar
+      </CButton>
     </template>
   </ModalComponent>
 </template>

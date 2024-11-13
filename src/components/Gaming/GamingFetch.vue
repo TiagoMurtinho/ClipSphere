@@ -1,10 +1,18 @@
 <template>
   <div>
-      <VueSpinnerBars size="50" color="#000" />
-    <div>
-      <GamingList :videos="videos" />
-      <NoResults v-if="videos.length === 0" />
-    </div>
+    <GamingList
+      v-if="videos && videos.length > 0"
+      :videos="videos"
+    />
+    <NoResults
+      v-else
+      message="Nenhum vídeo jogo encontrado!"
+    />
+    <VueSpinnerBars
+      v-if="loading"
+      size="50"
+      color="#000"
+    />
   </div>
 </template>
 

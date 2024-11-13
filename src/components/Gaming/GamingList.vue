@@ -12,6 +12,7 @@
 </template>
 
 <script setup>
+import './Gaming.css'
 import GamingCard from './GamingCard.vue';
 import { inject } from 'vue'
 
@@ -26,18 +27,5 @@ const isSidebarOpen = inject('isSidebarOpen');
 </script>
 
 <style scoped>
-.gaming-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  transition: margin-left 0.3s ease-in-out;
-}
 
-.gaming-list.shifted {
-  margin-left: 16%;
-  transition: margin-left 0.3s ease-in-out;
-}
 </style>

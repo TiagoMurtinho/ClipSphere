@@ -1,8 +1,18 @@
 <template>
   <div>
-    <TrendingList v-if="trendingVideos && trendingVideos.length > 0" :trendingVideos="trendingVideos" />
-    <NoResults v-else message="Nenhuma tendência encontrada!" />
-    <VueSpinnerBars v-if="loading" size="40" color="blue" />
+    <TrendingList
+      v-if="trendingVideos && trendingVideos.length > 0"
+      :trendingVideos="trendingVideos"
+    />
+    <NoResults
+      v-else
+      message="Nenhuma tendência encontrada!"
+    />
+    <VueSpinnerBars
+      v-if="loading"
+      size="40"
+      color="blue"
+    />
   </div>
 </template>
 

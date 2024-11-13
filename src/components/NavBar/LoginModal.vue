@@ -10,8 +10,17 @@
       @googleLogin="OAuth"
     />
     <template #footer>
-      <CButton color="secondary" @click="openRegistrationModal">Novo Utilizador</CButton>
-      <CButton color="primary">Entrar</CButton>
+      <CButton
+        color="secondary"
+        @click="openRegistrationModal"
+      >
+        Novo Utilizador
+      </CButton>
+      <CButton
+        color="primary"
+      >
+        Entrar
+      </CButton>
     </template>
   </ModalComponent>
 </template>
