@@ -5,23 +5,8 @@
     </div>
     <UserButtons
       :isAuthenticated="isAuthenticated"
-      @openModal="openModal"
+      @openModal="handleOpenModal"
       @logout="logout"
-    />
-    <LoginModal
-      :visible="visibleLoginModal"
-      @close="closeLoginModal"
-      @openRegistrationModal="openRegistrationModal"
-      @googleLogin="OAuth"
-      :cilUser="cilUser"
-      :cilLockLocked="cilLockLocked"
-    />
-    <RegistrationModal
-      :visible="visibleRegistrationModal"
-      @close="closeRegistrationModal"
-      @openLoginModal="openLoginModal"
-      :cilUser="cilUser"
-      :cilLockLocked="cilLockLocked"
     />
     <CategoryNavigation
       v-if="isHomeView && categories && categories.length > 0"
@@ -35,92 +20,38 @@
 <script setup>
 import './NavBar.css'
 import { inject, onMounted, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { cilLockLocked, cilUser } from '@coreui/icons'
+import { useRoute, useRouter } from 'vue-router'
 import youtube from '../../api'
-import { initGoogleClient, signIn } from '@/oauth.js'
+import { initGoogleClient } from '@/oauth.js'
 import SearchBar from './SearchBar.vue'
 import UserButtons from '@/components/NavBar/UserButton.vue'
-import LoginModal from '@/components/NavBar/LoginModal.vue'
-import RegistrationModal from '@/components/NavBar/RegistrationModal.vue'
 import CategoryNavigation from '@/components/NavBar/CategoryNavigation.vue'
 
 const isSidebarOpen = inject('isSidebarOpen');
+const isAuthenticated = inject('isAuthenticated');
 const categories = ref([]);
 const activeCategory = ref('all');
-const emit = defineEmits(['updateCategory']);
+const loading = ref(false);
+let isCategoriesFetched = false;
 const route = useRoute();
+const router = useRouter();
 const isHomeView = ref(route.name === 'home');
-const isAuthenticated = ref(false);
+const emit = defineEmits(['updateCategory']);
 
-watch(() => route.name, (newRouteName) => {
-  isHomeView.value = newRouteName === 'home';
-});
-
-const visibleLoginModal = ref(false)
-const visibleRegistrationModal = ref(false)
-
-const openModal = () => {
-  visibleLoginModal.value = true;
-};
-
-const openRegistrationModal = () => {
-  visibleLoginModal.value = false;
-  visibleRegistrationModal.value = true;
+function navigateTo(path) {
+  router.push(path);
 }
 
-const openLoginModal = () => {
-  visibleRegistrationModal.value = false;
-  visibleLoginModal.value = true;
+function handleOpenModal() {
+  emit('openModal');
 }
-
-const closeLoginModal = () => {
-  visibleLoginModal.value = false;
-};
-
-const closeRegistrationModal = () => {
-  visibleRegistrationModal.value = false;
-};
-
-onMounted(() => {
-  initGoogleClient('558212388408-5vh2jjjjs9be3htk4gl4a27u6d2i368c.apps.googleusercontent.com');
-
-  const authStatus = localStorage.getItem('isAuthenticated');
-  if (authStatus === 'true') {
-    isAuthenticated.value = true;
-  }
-});
-
-const OAuth = async () => {
-  try {
-    const tokens = await signIn();
-
-    const tokenData = {
-      accessToken: tokens.access_token,
-      expiresIn: tokens.expires_in,
-    };
-
-    localStorage.setItem('authTokens', JSON.stringify(tokenData));
-    localStorage.setItem('isAuthenticated', 'true');
-
-    isAuthenticated.value = true;
-
-    window.location.href = '/';
-  } catch (error) {
-    console.error('Erro ao autenticar', error);
-  }
-};
 
 const logout = () => {
-
   localStorage.removeItem('authTokens');
   localStorage.removeItem('isAuthenticated');
   isAuthenticated.value = false;
-  window.location.href = '/';
+  navigateTo('/');
 };
-
-const loading = ref(false);
-let isCategoriesFetched = false;
 
 async function handleSearch(query) {
   const response = await youtube.get('/search', {
@@ -176,9 +107,19 @@ function selectCategory(categoryId) {
   emit('updateCategory',  categoryId );
 }
 
-
 onMounted(() => {
+  initGoogleClient('558212388408-5vh2jjjjs9be3htk4gl4a27u6d2i368c.apps.googleusercontent.com');
+
+  const authStatus = localStorage.getItem('isAuthenticated');
+  if (authStatus === 'true') {
+    isAuthenticated.value = true;
+  }
+
   fetchCategories();
   emit('updateCategory', 'all' );
+});
+
+watch(() => route.name, (newRouteName) => {
+  isHomeView.value = newRouteName === 'home';
 });
 </script>

@@ -139,6 +139,7 @@
         <div class="border-bottom" />
         <CNavItem
           href="#"
+          @click="handleSettingsClick"
         >
           <CIcon
             customClassName="nav-icon"
@@ -173,34 +174,20 @@
 import './Sidebar.css'
 import { CSidebar, CSidebarHeader, CSidebarBrand, CSidebarNav, CNavTitle, CNavItem } from '@coreui/vue';
 import { CIcon } from '@coreui/icons-vue';
-import {
-  cilHome,
-  cilAlbum,
-  cilFeaturedPlaylist,
-  cilFire,
-  cilMusicNote,
-  cilMovie,
-  cilGamepad,
-  cilAmericanFootball, cilMic, cilSettings, cilInfo, cilSpeech
-} from '@coreui/icons'
-import { inject, computed } from 'vue'
+import { cilHome, cilAlbum, cilFeaturedPlaylist, cilFire, cilMusicNote, cilMovie, cilGamepad, cilAmericanFootball, cilMic, cilSettings, cilInfo, cilSpeech } from '@coreui/icons'
+import { inject, computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const isSidebarOpen = inject('isSidebarOpen');
+const isAuthenticated = inject('isAuthenticated');
 const route = useRoute();
-
 const router = useRouter();
+const emit = defineEmits(['openModal', 'openSettingsModal']);
+
 function navigateTo(path) {
   router.push(path);
 }
 
-function handleMouseOver() {
-  isSidebarOpen.value = true;
-}
-
-function handleMouseLeave() {
-  isSidebarOpen.value = false;
-}
 function isActive(path) {
   return route.path === path;
 }
@@ -229,4 +216,20 @@ const sidebarLogoClass = computed(() => ({
   'sidebar-logo-closed': !isSidebarOpen.value,
   'sidebar-logo-alt': !isHomeRoute.value
 }));
+
+function handleSettingsClick() {
+  if (isAuthenticated.value) {
+    emit('openSettingsModal');
+  } else {
+    emit('openModal');
+  }
+}
+
+function handleMouseOver() {
+  isSidebarOpen.value = true;
+}
+
+function handleMouseLeave() {
+  isSidebarOpen.value = false;
+}
 </script>

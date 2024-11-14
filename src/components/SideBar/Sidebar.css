@@ -2,7 +2,7 @@
     height: 100vh;
     background-color: #ffffff;
     color: white;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .sidebar-brand {

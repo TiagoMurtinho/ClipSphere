@@ -2,6 +2,7 @@
   <div class="home-view">
     <VideoFetcher
       :categoryId="categoryId"
+      :selectedCategories="selectedCategories"
     />
   </div>
 </template>
@@ -14,6 +15,10 @@ const props = defineProps({
   categoryId: {
     type: String,
     default: 'all'
+  },
+  selectedCategories: {
+    type: Array,
+    default: () => []
   }
 });
 </script>
