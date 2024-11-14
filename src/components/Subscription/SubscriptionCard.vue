@@ -1,7 +1,7 @@
 <template>
   <div class="subscription-card">
     <img
-      v-if="channel.snippet.thumbnails.default"
+      v-if="channel.snippet.thumbnails && channel.snippet.thumbnails.default && channel.snippet.thumbnails.default.url"
       :src="channel.snippet.thumbnails.default.url"
       alt="Thumbnail"
       class="subscription-card-channel-thumbnail"
