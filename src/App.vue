@@ -8,6 +8,7 @@
     <Sidebar
       @openModal="openLoginModal"
       @openSettingsModal="openSettingsModal"
+      @openChatbotInline="openChatbotInline"
     />
     <router-view
       :categoryId="currentCategoryId"
@@ -34,6 +35,7 @@
       @close="closeSettingsModal"
       @updateCategories="handleUpdateCategories"
     />
+    <ChatbotInline ref="chatbotRef" />
   </div>
 </template>
 
@@ -47,13 +49,28 @@ import RegistrationModal from '@/components/NavBar/RegistrationModal.vue'
 import { cilUser, cilLockLocked } from '@coreui/icons';
 import { signIn } from '@/oauth.js'
 import { useRouter } from 'vue-router'
-import SettingsModal from '@/components/SideBar/SettingsModal.vue'
+import SettingsModal from '@/components/Settings/SettingsModal.vue'
+import ChatbotInline from '@/components/Chatbot/ChatbotInline.vue'
 
 const isSidebarOpen = ref(false);
 const currentCategoryId = ref('all');
 const isAuthenticated = ref(false);
-
 const isSettingsModalOpen = ref(false);
+
+const chatbotRef = ref(null);
+
+const isChatbotVisible = ref(false);
+
+const openChatbotInline = () => {
+  isChatbotVisible.value = !isChatbotVisible.value;
+  if (chatbotRef.value) {
+    if (isChatbotVisible.value) {
+      chatbotRef.value.openChatbot();
+    } else {
+      chatbotRef.value.closeChatbot();
+    }
+  }
+};
 
 const openSettingsModal = () => {
   isSettingsModalOpen.value = true;

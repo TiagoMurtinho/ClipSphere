@@ -1,0 +1,18 @@
+.chatbot-container {
+    position: fixed;
+    bottom: 0;
+    margin-left: 75%;
+    width: 25%;
+    height: 400px;
+    background-color: #fff;
+    border-top: 2px solid #ddd;
+    z-index: 9999;
+    display: none;
+    transform: translateY(0);
+    transition: transform 0.5s ease-out;
+}
+
+.chatbot-container.active {
+    display: block;
+    transform: translateY(0);
+}

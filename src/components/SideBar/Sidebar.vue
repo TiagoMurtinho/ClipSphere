@@ -149,6 +149,7 @@
         </CNavItem>
         <CNavItem
           href="#"
+          @click="openChatbotInline"
         >
           <CIcon
             customClassName="nav-icon"
@@ -182,7 +183,7 @@ const isSidebarOpen = inject('isSidebarOpen');
 const isAuthenticated = inject('isAuthenticated');
 const route = useRoute();
 const router = useRouter();
-const emit = defineEmits(['openModal', 'openSettingsModal']);
+const emit = defineEmits(['openModal', 'openSettingsModal', 'openChatbotInline']);
 
 function navigateTo(path) {
   router.push(path);
@@ -231,5 +232,9 @@ function handleMouseOver() {
 
 function handleMouseLeave() {
   isSidebarOpen.value = false;
+}
+
+function openChatbotInline() {
+  emit('openChatbotInline');
 }
 </script>
