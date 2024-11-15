@@ -98,6 +98,18 @@ const fetchComments = async (videoId) => {
 
 const commentsMarginTop = ref('30%');
 
+watch(
+  () => isSidebarOpen?.value,
+  (newVal) => {
+    if (newVal) {
+      commentsMarginTop.value = '40%';
+    } else {
+      commentsMarginTop.value = '30%';
+    }
+  },
+  { immediate: true }
+);
+
 const handleDescriptionToggle = (newMarginTop) => {
   commentsMarginTop.value = newMarginTop;
 };

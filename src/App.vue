@@ -9,6 +9,7 @@
       @openModal="openLoginModal"
       @openSettingsModal="openSettingsModal"
       @openChatbotInline="openChatbotInline"
+      @openFeedbackModal="openFeedbackModal"
     />
     <router-view
       :categoryId="currentCategoryId"
@@ -36,6 +37,11 @@
       @updateCategories="handleUpdateCategories"
     />
     <ChatbotInline ref="chatbotRef" />
+    <FeedbackModal
+      :isOpen="isFeedbackModalOpen"
+      @close="closeFeedbackModal"
+      @submitFeedback="handleFeedbackSubmit"
+    />
   </div>
 </template>
 
@@ -51,11 +57,13 @@ import { signIn } from '@/oauth.js'
 import { useRouter } from 'vue-router'
 import SettingsModal from '@/components/Settings/SettingsModal.vue'
 import ChatbotInline from '@/components/Chatbot/ChatbotInline.vue'
+import FeedbackModal from '@/components/Feedback/FeedbackModal.vue'
 
 const isSidebarOpen = ref(false);
 const currentCategoryId = ref('all');
 const isAuthenticated = ref(false);
 const isSettingsModalOpen = ref(false);
+const isFeedbackModalOpen = ref(false);
 
 const chatbotRef = ref(null);
 
@@ -71,6 +79,20 @@ const openChatbotInline = () => {
     }
   }
 };
+
+const openFeedbackModal = () => {
+  isFeedbackModalOpen.value = true;
+};
+
+const closeFeedbackModal = () => {
+  isFeedbackModalOpen.value = false;
+};
+
+function handleFeedbackSubmit(feedback) {
+  console.log("Feedback enviado:", feedback);
+  closeFeedbackModal();
+}
+
 
 const openSettingsModal = () => {
   isSettingsModalOpen.value = true;

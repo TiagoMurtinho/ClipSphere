@@ -159,6 +159,7 @@
         </CNavItem>
         <CNavItem
           href="#"
+          @click="openFeedbackModal"
         >
           <CIcon
             customClassName="nav-icon"
@@ -183,7 +184,7 @@ const isSidebarOpen = inject('isSidebarOpen');
 const isAuthenticated = inject('isAuthenticated');
 const route = useRoute();
 const router = useRouter();
-const emit = defineEmits(['openModal', 'openSettingsModal', 'openChatbotInline']);
+const emit = defineEmits(['openModal', 'openSettingsModal', 'openChatbotInline', 'openFeedbackModal']);
 
 function navigateTo(path) {
   router.push(path);
@@ -225,6 +226,10 @@ function handleSettingsClick() {
     emit('openModal');
   }
 }
+
+const openFeedbackModal = () => {
+  emit('openFeedbackModal');
+};
 
 function handleMouseOver() {
   isSidebarOpen.value = true;

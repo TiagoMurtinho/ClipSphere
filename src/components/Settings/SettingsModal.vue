@@ -15,7 +15,7 @@
       @click.stop
     >
       <h2>Configurações</h2>
-      <p>Configurações do usuário e preferências.</p>
+      <p>Configurações do utilizador e preferências.</p>
       <div
         v-if="categories.length > 0"
         class="settings-modal-categories"

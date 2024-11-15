@@ -8,7 +8,7 @@
     ></iframe>
     <div class="video-details">
       <h2>{{ video.snippet.title }}</h2>
-      <p><strong>Visualizações:</strong> {{ video.statistics.viewCount }}</p>
+      <p>{{ formatCount(video.statistics.viewCount) }} views</p>
       <p>
         <span v-if="isDescriptionShortened">
           {{ shortenedDescription }}...
@@ -51,4 +51,13 @@ const toggleDescription = () => {
 const videoUrl = computed(() =>
   props.video ? `https://www.youtube.com/embed/${props.video.id}` : ''
 );
+
+function formatCount(count) {
+  if (count >= 1_000_000) {
+    return `${(Math.floor(count / 100_000) / 10).toFixed(1)}M`;
+  } else if (count >= 1_000) {
+    return `${(Math.floor(count / 100) / 10).toFixed(1)}K`;
+  }
+  return count.toString();
+}
 </script>
