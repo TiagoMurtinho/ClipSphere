@@ -37,6 +37,7 @@
             v-for="video in videos"
             :key="video.id.videoId"
             class="subscription-video-item"
+            @click="goToPlayerView(video.id.videoId)"
           >
             <img
               :src="video.snippet.thumbnails.medium.url"
@@ -56,6 +57,7 @@ import './Subscription.css'
 import { getCurrentInstance, onUnmounted, watch } from 'vue'
 import { CIcon } from '@coreui/icons-vue'
 import { cilX } from '@coreui/icons'
+import { useRouter } from 'vue-router'
 
 const emit = defineEmits(['close']);
 
@@ -74,6 +76,8 @@ const props = defineProps({
   },
 });
 
+const router = useRouter();
+
 const closeModal = () => {
   emit('close');
 };
@@ -91,6 +95,10 @@ const subscribeToChannel = () => {
     timer: 3000,
     timerProgressBar: true,
   });
+};
+
+const goToPlayerView = (videoId) => {
+  router.push(`/player/${videoId}`)
 };
 
 function blockScroll() {

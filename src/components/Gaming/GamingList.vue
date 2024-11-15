@@ -7,7 +7,9 @@
     <GamingCard
       v-for="video in videos"
       :key="video.id"
-      :video="video" />
+      :video="video"
+      @click="handleVideoClick(video.id)"
+    />
   </div>
 </template>
 
@@ -15,6 +17,7 @@
 import './Gaming.css'
 import GamingCard from './GamingCard.vue';
 import { inject } from 'vue'
+import router from '@/router/index.js'
 
 const props = defineProps({
   videos: {
@@ -22,6 +25,10 @@ const props = defineProps({
     required: true,
   },
 });
+
+const handleVideoClick = (videoId) => {
+  router.push(`/player/${videoId}`);
+};
 
 const isSidebarOpen = inject('isSidebarOpen');
 </script>

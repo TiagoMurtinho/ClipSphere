@@ -8,6 +8,7 @@
       v-for="(music, idx) in musicList"
       :key="idx"
       :music="music"
+      @click="handleVideoClick(music.id)"
     />
   </div>
 </template>
@@ -16,6 +17,7 @@
 
 import MusicCard from './MusicCard.vue';
 import { inject } from 'vue'
+import router from '@/router/index.js'
 
 const isSidebarOpen = inject('isSidebarOpen');
 
@@ -25,4 +27,8 @@ defineProps({
     required: true,
   },
 });
+
+const handleVideoClick = (musicId) => {
+  router.push(`/player/${musicId}`);
+};
 </script>

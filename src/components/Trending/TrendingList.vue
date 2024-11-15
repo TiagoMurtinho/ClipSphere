@@ -5,7 +5,9 @@
     :class="{ shifted: isSidebarOpen }">
     <div
       v-for="(video, idx) in trendingVideos"
-      :key="idx">
+      :key="idx"
+      @click="handleVideoClick(video.id.videoId || video.id)"
+    >
       <TrendingCard :video="video" />
     </div>
   </div>
@@ -15,6 +17,7 @@
 import './Trending.css'
 import TrendingCard from './TrendingCard.vue';
 import { inject } from 'vue'
+import router from '@/router/index.js'
 
 defineProps({
   trendingVideos: {
@@ -22,6 +25,10 @@ defineProps({
     required: true
   }
 });
+
+const handleVideoClick = (videoId) => {
+  router.push(`/player/${videoId}`);
+};
 
 const isSidebarOpen = inject('isSidebarOpen');
 </script>

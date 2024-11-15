@@ -1,0 +1,20 @@
+.player-view {
+    padding: 20px;
+}
+
+.player-content {
+    display: flex;
+    gap: 20px;
+}
+
+.player-main-column {
+    width: 65%;
+    margin-left: 5%;
+    margin-top: 5%;
+    transition: margin-left 0.5s ease-in-out;
+}
+
+.player-main-column-alt {
+    margin-left: 18%;
+    transition: margin-left 0.5s ease-in-out;
+}

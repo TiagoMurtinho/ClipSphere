@@ -30,8 +30,9 @@
           >
             <MovieCard
               v-for="(movie) in row"
-              :key="movie.id"
+              :key="movie.id.videoId"
               :movie="movie"
+              @click="handleVideoClick(movie)"
             />
           </div>
         </transition>
@@ -56,6 +57,7 @@ import { ref, computed, inject } from 'vue'
 import MovieCard from './MovieCard.vue';
 import { CIcon } from '@coreui/icons-vue'
 import { cilArrowLeft, cilArrowRight } from '@coreui/icons'
+import router from '@/router/index.js'
 
 const props = defineProps({
   movieList: {
@@ -107,4 +109,13 @@ function previousRow(rowIndex) {
 }
 
 const isSidebarOpen = inject('isSidebarOpen');
+
+const handleVideoClick = (movie) => {
+  const videoId = movie.id.videoId;
+  if (videoId) {
+    router.push(`/player/${videoId}`);
+  } else {
+    console.error("ID do vídeo não encontrado!");
+  }
+};
 </script>

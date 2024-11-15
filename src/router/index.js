@@ -8,6 +8,7 @@ import MoviesView from '@/views/MoviesView.vue'
 import GamingView from '@/views/GamingView.vue'
 import SportsView from '@/views/SportsView.vue'
 import PodcastsView from '@/views/PodcastsView.vue'
+import PlayerView from '@/views/PlayerView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,7 +57,12 @@ const router = createRouter({
       path: '/podcasts',
       name: 'podcasts',
       component: PodcastsView
-    }
+    },
+    {
+      path: '/player/:videoId',
+      name: 'player',
+      component: PlayerView,
+    },
   ]
 })
 

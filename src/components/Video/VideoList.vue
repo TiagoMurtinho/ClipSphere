@@ -8,6 +8,7 @@
       v-for="video in videos"
       :key="video.id"
       :video="video"
+      @click="handleVideoClick(video.id.videoId || video.id)"
     />
   </div>
 </template>
@@ -16,6 +17,7 @@
 import './Video.css'
 import VideoCard from './VideoCard.vue';
 import { inject } from 'vue'
+import router from '@/router/index.js'
 
 const props = defineProps({
   videos: {
@@ -25,6 +27,10 @@ const props = defineProps({
 });
 
 const isSidebarOpen = inject('isSidebarOpen');
+
+const handleVideoClick = (videoId) => {
+  router.push(`/player/${videoId}`);
+};
 </script>
 
 <style scoped>
