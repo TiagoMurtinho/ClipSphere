@@ -80,7 +80,8 @@ async function fetchChannelVideos(channelId) {
         },
       });
 
-      channelVideos.value = response.data.items;
+      channelVideos.value = response.data.items.filter(item => item.id.kind === 'youtube#video');
+
       localStorage.setItem(`videos_${channelId}`, JSON.stringify(response.data.items));
       localStorage.setItem(`videos_${channelId}_timestamp`, now.toString());
 
