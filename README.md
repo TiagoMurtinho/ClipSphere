@@ -26,6 +26,7 @@ Before installing, ensure you have the following requirements:
 - [Node.js](https://nodejs.org/) (for running the development server & compiling front-end assets)
 - [NPM](https://www.npmjs.com/) (for managing front-end dependencies)
 - [Google Developer Console](https://console.developers.google.com/) account (for creating OAuth credentials & YouTube Data API v3 key)
+- [Chatling](https://chatling.ai/) account (for chatbot integration)
 
 ## Installation
 
@@ -63,11 +64,35 @@ Before installing, ensure you have the following requirements:
      ```
    - Replace `'YourClientId'` with your own OAuth client ID. You can get the client ID by creating an OAuth 2.0 credential in the [Google Developer Console](https://console.developers.google.com/).
 
-6. Start the development server:
+6. **Configure the Chatling Chatbot**:
+
+   - Create an account on [Chatling](https://chatling.ai/) and create your chatbot.
+   - Navigate to the `src/components/Chatbot` folder.
+   - Open the `ChatbotInline.vue` file.
+   - Replace the placeholder `3994393143` with your chatbot's ID in the following section:
+     ```javascript
+     function loadChatbotScript() {
+       if (!document.getElementById('chatling-embed-script')) {
+         const script = document.createElement('script');
+         script.src = 'https://chatling.ai/js/embed.js';
+         script.async = true;
+         script.id = 'chatling-embed-script';
+         script.setAttribute('data-id', '3994393143'); // Replace this with your Chatbot ID
+         script.setAttribute('data-display', 'page_inline');
+         document.body.appendChild(script);
+
+         const configScript = document.createElement('script');
+         configScript.innerHTML = `window.chtlConfig = { chatbotId: "3994393143", display: "page_inline" };`; // Replace this with your Chatbot ID
+         document.body.appendChild(configScript);
+       }
+     }
+     ```
+
+7. Start the development server:
    ```bash
    npm run dev
 
-7. Now, open `[http://localhost:5173]` in your browser to view the app.
+8. Now, open `[http://localhost:5173]` in your browser to view the app.
 
 ## License
 
