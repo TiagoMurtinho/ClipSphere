@@ -26,6 +26,7 @@ import { initGoogleClient } from '@/oauth.js'
 import SearchBar from './SearchBar.vue'
 import UserButtons from '@/components/NavBar/UserButton.vue'
 import CategoryNavigation from '@/components/NavBar/CategoryNavigation.vue'
+import Swal from 'sweetalert2'
 
 const isSidebarOpen = inject('isSidebarOpen');
 const isAuthenticated = inject('isAuthenticated');
@@ -48,9 +49,29 @@ const logout = () => {
   isAuthenticated.value = false;
 };
 
+function blockSpecialChars(input) {
+  const regex = /[^a-zA-Z0-9\s]/g;
+  return input.replace(regex, '');
+}
+
 function handleSearch(query) {
   if (query) {
-    router.push({ name: 'results', query: { q: query } });
+
+    const cleanQuery = blockSpecialChars(query);
+    if (cleanQuery !== query) {
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'error',
+        title: 'Caracteres especiais não são permitidos!',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
+      return;
+    }
+
+    router.push({ name: 'results', query: { q: cleanQuery } });
   }
 }
 
