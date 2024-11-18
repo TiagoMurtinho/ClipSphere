@@ -52,6 +52,7 @@ import './FeedbackModal.css'
 import { ref, watch } from 'vue';
 import { cilX } from '@coreui/icons'
 import { CIcon } from '@coreui/icons-vue'
+import Swal from 'sweetalert2'
 
 const props = defineProps({
   isOpen: {
@@ -74,7 +75,12 @@ function submitFeedback() {
     feedback.value = '';
     closeModal();
   } else {
-    alert('Por favor, insira um feedback.');
+    Swal.fire({
+      icon: 'warning',
+      title: 'Atenção',
+      text: 'Por favor, insira um feedback.',
+      confirmButtonText: 'OK',
+    });
   }
 }
 
