@@ -4,6 +4,7 @@
     :style="{ marginTop: commentsMarginTop }"
   >
     <h3>Comentários</h3>
+    <div v-if="comments.length === 0">Comentários desativados ou não encontrados para este vídeo.</div>
     <div
       v-for="comment in comments"
       :key="comment.id"
