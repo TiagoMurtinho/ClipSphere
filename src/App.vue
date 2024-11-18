@@ -53,7 +53,6 @@ import LoginModal from '@/components/NavBar/LoginModal.vue'
 import RegistrationModal from '@/components/NavBar/RegistrationModal.vue'
 import { cilUser, cilLockLocked } from '@coreui/icons';
 import { signIn } from '@/oauth.js'
-import { useRouter } from 'vue-router'
 import SettingsModal from '@/components/Settings/SettingsModal.vue'
 import ChatbotInline from '@/components/Chatbot/ChatbotInline.vue'
 import FeedbackModal from '@/components/Feedback/FeedbackModal.vue'
@@ -115,11 +114,6 @@ provide('selectedCategories', selectedCategories);
 provide('isSidebarOpen', isSidebarOpen);
 provide('isAuthenticated', isAuthenticated);
 
-const router = useRouter();
-function navigateTo(path) {
-  router.push(path);
-}
-
 const visibleLoginModal = ref(false);
 const visibleRegistrationModal = ref(false);
 
@@ -159,7 +153,6 @@ const OAuth = async () => {
 
     isAuthenticated.value = true;
     closeLoginModal();
-    navigateTo('/');
   } catch (error) {
     console.error('Erro ao autenticar', error);
   }

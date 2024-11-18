@@ -38,10 +38,6 @@ const router = useRouter();
 const isHomeView = ref(route.name === 'home');
 const emit = defineEmits(['updateCategory']);
 
-function navigateTo(path) {
-  router.push(path);
-}
-
 function handleOpenModal() {
   emit('openModal');
 }
@@ -50,7 +46,6 @@ const logout = () => {
   localStorage.removeItem('authTokens');
   localStorage.removeItem('isAuthenticated');
   isAuthenticated.value = false;
-  navigateTo('/');
 };
 
 function handleSearch(query) {
