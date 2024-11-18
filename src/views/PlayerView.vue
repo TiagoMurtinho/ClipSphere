@@ -119,6 +119,8 @@ watch(
   async (newVideoId) => {
     if (newVideoId) {
       await fetchVideoDetails(newVideoId);
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   },
   { immediate: true }
