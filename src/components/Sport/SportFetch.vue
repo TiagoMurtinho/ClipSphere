@@ -23,7 +23,6 @@ import SportList from './SportList.vue';
 import NoResults from '@/components/NoData/NoDataComponent.vue';
 import youtube from '../../api';
 import { VueSpinnerBars } from 'vue3-spinners';
-import GamingList from '@/components/Gaming/GamingList.vue'
 
 const videos = ref([]);
 const loading = ref(true);

@@ -69,7 +69,6 @@ const props = defineProps({
 const moviesPerLine = 12;
 const moviesPerPage = 4;
 const rowsPerPage = 3;
-const currentPage = ref(0);
 const currentRowPage = ref(Array(rowsPerPage).fill(0));
 const transitionDirection = ref('right');
 const rowTitles = [

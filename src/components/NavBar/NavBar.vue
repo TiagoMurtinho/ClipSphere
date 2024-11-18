@@ -29,7 +29,7 @@ import CategoryNavigation from '@/components/NavBar/CategoryNavigation.vue'
 import Swal from 'sweetalert2'
 
 const isSidebarOpen = inject('isSidebarOpen');
-const isAuthenticated = inject('isAuthenticated');
+const isAuthenticated = inject('isAuthenticated', false);
 const categories = ref([]);
 const activeCategory = ref('all');
 const loading = ref(false);

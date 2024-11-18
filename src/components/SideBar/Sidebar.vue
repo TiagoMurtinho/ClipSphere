@@ -177,7 +177,7 @@ import './Sidebar.css'
 import { CSidebar, CSidebarHeader, CSidebarBrand, CSidebarNav, CNavTitle, CNavItem } from '@coreui/vue';
 import { CIcon } from '@coreui/icons-vue';
 import { cilHome, cilAlbum, cilFeaturedPlaylist, cilFire, cilMusicNote, cilMovie, cilGamepad, cilAmericanFootball, cilMic, cilSettings, cilInfo, cilSpeech } from '@coreui/icons'
-import { inject, computed, ref } from 'vue'
+import { inject, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const isSidebarOpen = inject('isSidebarOpen');

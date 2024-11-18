@@ -10,22 +10,13 @@
       </CIcon>
       <h2 class="trending-title-heading">Tendências:</h2>
     </div>
-    <TrendingFetch>
-      <template
-        #default="{ trendingVideos }"
-      >
-        <TrendingList
-          :trendingVideos="trendingVideos"
-        />
-      </template>
-    </TrendingFetch>
+    <TrendingFetch />
   </div>
 </template>
 
 <script setup>
 import '../assets/CSS/TrendingView.css'
 import TrendingFetch from '../components/Trending/TrendingFetch.vue';
-import TrendingList from '../components/Trending/TrendingList.vue';
 import { cilFire } from '@coreui/icons'
 import { CIcon } from '@coreui/icons-vue'
 import { inject } from 'vue'

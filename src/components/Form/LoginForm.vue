@@ -62,16 +62,16 @@ import { CFormCheck, CFormInput, CFormLabel } from '@coreui/vue/dist/esm/compone
 
 const props = defineProps({
   cilUser: {
-    type: Array,
+    type: Object,
     required: true,
   },
   cilLockLocked: {
-    type: Array,
+    type: Object,
     required: true,
   },
 });
 
-const emit = defineEmits();
+const emit = defineEmits(['login', 'googleLogin']);
 
 const username = ref('');
 const password = ref('');

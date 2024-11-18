@@ -2,7 +2,6 @@
   <div class="video-player">
     <iframe
       :src="videoUrl"
-      frameborder="0"
       allowfullscreen
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     ></iframe>
