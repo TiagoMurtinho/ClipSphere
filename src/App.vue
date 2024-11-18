@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <NavBar
-      @search="handleSearch"
       @updateCategory="updateCategoryHandler"
       @openModal="openLoginModal"
     />
@@ -115,11 +114,6 @@ function handleUpdateCategories(categories) {
 provide('selectedCategories', selectedCategories);
 provide('isSidebarOpen', isSidebarOpen);
 provide('isAuthenticated', isAuthenticated);
-
-
-function handleSearch(query) {
-  console.log("Buscando por:", query);
-}
 
 const router = useRouter();
 function navigateTo(path) {

@@ -9,6 +9,7 @@ import GamingView from '@/views/GamingView.vue'
 import SportsView from '@/views/SportsView.vue'
 import PodcastsView from '@/views/PodcastsView.vue'
 import PlayerView from '@/views/PlayerView.vue'
+import ResultsView from '@/views/ResultsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,6 +63,12 @@ const router = createRouter({
       path: '/player/:videoId',
       name: 'player',
       component: PlayerView,
+    },
+    {
+      path: '/results',
+      name: 'results',
+      component: ResultsView,
+      props: route => ({ query: route.query.q })
     },
   ]
 })

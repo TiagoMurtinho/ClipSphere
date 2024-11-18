@@ -230,3 +230,11 @@
     margin-left: 20%;
     margin-right: 6%;
 }
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 100%;
+}

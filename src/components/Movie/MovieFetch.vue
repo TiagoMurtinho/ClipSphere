@@ -8,11 +8,12 @@
       v-else
       message="Nenhum filme encontrado!"
     />
-    <VueSpinnerBars
+    <div
       v-if="loading"
-      size="50"
-      color="#000"
-    />
+      class="spinner-container"
+    >
+      <VueSpinnerBars size="40" color="blue" />
+    </div>
   </div>
 </template>
 

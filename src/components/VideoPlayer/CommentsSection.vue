@@ -1,7 +1,14 @@
 <template>
-  <div class="comments-section" :style="{ marginTop: commentsMarginTop }">
+  <div
+    class="comments-section"
+    :style="{ marginTop: commentsMarginTop }"
+  >
     <h3>Comentários</h3>
-    <div v-for="comment in comments" :key="comment.id" class="comment">
+    <div
+      v-for="comment in comments"
+      :key="comment.id"
+      class="comment"
+    >
       <div class="comment-author-avatar">
         <img
           v-if="comment.snippet.topLevelComment.snippet.authorProfileImageUrl"

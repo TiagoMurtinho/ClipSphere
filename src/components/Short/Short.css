@@ -146,3 +146,11 @@
     color: #333;
     text-align: center;
 }
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 100%;
+}

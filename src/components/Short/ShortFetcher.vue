@@ -1,10 +1,11 @@
 <template>
   <div>
-    <VueSpinnerBars
+    <div
       v-if="loading"
-      size="40"
-      color="blue"
-    />
+      class="spinner-container"
+    >
+      <VueSpinnerBars size="40" color="blue" />
+    </div>
     <ShortsList
       v-if="shorts && shorts.length > 0"
       :shorts="shorts"

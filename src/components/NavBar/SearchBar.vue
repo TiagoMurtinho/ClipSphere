@@ -7,14 +7,23 @@
       :clear-icon="false"
       :clear-on-esc="false"
       :select-on-focus="false"
+      @search="onSearch"
     />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import SearchInput from 'vue-search-input';
 import 'vue-search-input/dist/styles.css'
+import { ref } from 'vue'
 
 const searchText = ref('');
+
+const emit = defineEmits(['search']);
+
+const onSearch = () => {
+  emit('search', searchText.value);
+
+  searchText.value = '';
+}
 </script>

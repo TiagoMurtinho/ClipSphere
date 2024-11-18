@@ -53,16 +53,10 @@ const logout = () => {
   navigateTo('/');
 };
 
-async function handleSearch(query) {
-  const response = await youtube.get('/search', {
-    params: {
-      q: query,
-      part: 'snippet',
-      type: 'video',
-      order: 'date',
-    },
-  });
-  emit('updateCategory', { videos: response.data.items, category: 'search' });
+function handleSearch(query) {
+  if (query) {
+    router.push({ name: 'results', query: { q: query } });
+  }
 }
 
 async function fetchCategories() {

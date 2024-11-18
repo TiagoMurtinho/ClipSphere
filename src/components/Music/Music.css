@@ -93,3 +93,11 @@
     flex: 1 1 21%;
     max-width: 21%;
 }
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 100%;
+}
