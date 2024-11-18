@@ -45,6 +45,7 @@
 </template>
 
 <script setup>
+import '@/assets/CSS/App.css';
 import { ref, provide } from 'vue'
 import Sidebar from './components/SideBar/Sidebar.vue';
 import NavBar from '@/components/NavBar/NavBar.vue'
@@ -165,11 +166,3 @@ provide('closeRegistrationModal', closeRegistrationModal);
 provide('openLoginModal', openLoginModal);
 provide('openRegistrationModal', openRegistrationModal);
 </script>
-
-<style>
-#app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-</style>
