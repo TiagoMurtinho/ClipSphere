@@ -82,3 +82,43 @@
     height: 70vh;
     width: 100%;
 }
+
+@media (max-width: 480px) {
+
+    .video-list {
+        flex-direction: column;
+    }
+
+    .video-card {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 5%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-card:first-child {
+        margin-top: 15%;
+    }
+
+    .video-thumbnail {
+        height: 120px;
+    }
+
+    .video-info {
+        padding: 8px;
+    }
+
+    .video-info h3 {
+        font-size: 0.9rem;
+        height: auto;
+    }
+
+    .video-info p {
+        font-size: 0.75rem;
+    }
+
+    .video-list.shifted {
+        margin-left: 0;
+    }
+
+}

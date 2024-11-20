@@ -53,7 +53,7 @@
 
 <script setup>
 import './Movie.css'
-import { ref, computed, inject } from 'vue'
+import { ref, computed, inject, watchEffect } from 'vue'
 import MovieCard from './MovieCard.vue';
 import { CIcon } from '@coreui/icons-vue'
 import { cilArrowLeft, cilArrowRight } from '@coreui/icons'
@@ -67,7 +67,7 @@ const props = defineProps({
 });
 
 const moviesPerLine = 12;
-const moviesPerPage = 4;
+const moviesPerPage = ref(4);
 const rowsPerPage = 3;
 const currentRowPage = ref(Array(rowsPerPage).fill(0));
 const transitionDirection = ref('right');
@@ -87,14 +87,14 @@ const paginatedMovies = computed(() => {
 
   return rows.map((row, index) => {
     return row.slice(
-      currentRowPage.value[index] * moviesPerPage,
-      (currentRowPage.value[index] + 1) * moviesPerPage
+      currentRowPage.value[index] * moviesPerPage.value,
+      (currentRowPage.value[index] + 1) * moviesPerPage.value
     );
   });
 });
 
 function nextRow(rowIndex) {
-  if (currentRowPage.value[rowIndex] < Math.floor(moviesPerLine / moviesPerPage) - 1) {
+  if (currentRowPage.value[rowIndex] < Math.floor(moviesPerLine / moviesPerPage.value) - 1) {
     transitionDirection.value = 'right';
     currentRowPage.value[rowIndex]++;
   }
@@ -106,6 +106,14 @@ function previousRow(rowIndex) {
     currentRowPage.value[rowIndex]--;
   }
 }
+
+watchEffect(() => {
+  if (window.innerWidth <= 480) {
+    moviesPerPage.value = 1;
+  } else {
+    moviesPerPage.value = 4;
+  }
+});
 
 const isSidebarOpen = inject('isSidebarOpen');
 

@@ -37,3 +37,15 @@
     left: 0;
     width: calc(100% + 11%);
 }
+
+@media (max-width: 480px) {
+
+    .gaming-title {
+        margin-top: 35%;
+    }
+
+    .gaming-title-alt {
+        display: none;
+    }
+
+}

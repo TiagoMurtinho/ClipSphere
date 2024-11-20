@@ -37,7 +37,7 @@ let isCategoriesFetched = false;
 const route = useRoute();
 const router = useRouter();
 const isHomeView = ref(route.name === 'home');
-const emit = defineEmits(['updateCategory']);
+const emit = defineEmits(['updateCategory', 'openModal']);
 
 function handleOpenModal() {
   emit('openModal');

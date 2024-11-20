@@ -67,3 +67,41 @@
     height: 70vh;
     width: 100%;
 }
+
+@media (max-width: 480px) {
+
+    .trending-list {
+        flex-direction: column;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .trending-card {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 5%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .trending-card:first-child {
+        margin-top: 15%;
+    }
+
+    .trending-thumbnail {
+        height: 120px;
+    }
+
+    .trending-info h3 {
+        font-size: 0.9rem;
+        height: auto;
+    }
+
+    .trending-info p {
+        font-size: 0.75rem;
+    }
+
+    .trending-list.shifted {
+        margin-left: 0;
+    }
+
+}

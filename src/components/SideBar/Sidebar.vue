@@ -4,8 +4,13 @@
     @mouseover="handleMouseOver"
     @mouseleave="handleMouseLeave"
   >
+    <div
+      v-if="isSidebarOpen"
+      class="sidebar-overlay"
+      @click="toggleSidebar">
+    </div>
     <CSidebar
-      :class="['sidebar', { 'sidebar-closed': !isSidebarOpen }]"
+      :class="['sidebar', { 'sidebar-closed': !isSidebarOpen }, { open: isSidebarOpen }]"
       :unfoldable="true"
     >
       <CSidebarHeader
@@ -169,6 +174,14 @@
         </CNavItem>
       </CSidebarNav>
     </CSidebar>
+      <button
+        class="sidebar-toggle"
+        @click="toggleSidebar">
+        <CIcon
+          :icon="cilHamburgerMenu"
+          size="xl"
+        />
+      </button>
   </div>
 </template>
 
@@ -176,7 +189,21 @@
 import './Sidebar.css'
 import { CSidebar, CSidebarHeader, CSidebarBrand, CSidebarNav, CNavTitle, CNavItem } from '@coreui/vue';
 import { CIcon } from '@coreui/icons-vue';
-import { cilHome, cilAlbum, cilFeaturedPlaylist, cilFire, cilMusicNote, cilMovie, cilGamepad, cilAmericanFootball, cilMic, cilSettings, cilInfo, cilSpeech } from '@coreui/icons'
+import {
+  cilHome,
+  cilAlbum,
+  cilFeaturedPlaylist,
+  cilFire,
+  cilMusicNote,
+  cilMovie,
+  cilGamepad,
+  cilAmericanFootball,
+  cilMic,
+  cilSettings,
+  cilInfo,
+  cilSpeech,
+  cilHamburgerMenu
+} from '@coreui/icons'
 import { inject, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -241,5 +268,9 @@ function handleMouseLeave() {
 
 function openChatbotInline() {
   emit('openChatbotInline');
+}
+
+function toggleSidebar() {
+  isSidebarOpen.value = !isSidebarOpen.value;
 }
 </script>

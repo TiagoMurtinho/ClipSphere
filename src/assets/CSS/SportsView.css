@@ -37,3 +37,15 @@
     left: 0;
     width: calc(100% + 11%);
 }
+
+@media (max-width: 480px) {
+
+    .sport-title {
+        margin-top: 35%;
+    }
+
+    .sport-title-alt {
+        display: none;
+    }
+
+}

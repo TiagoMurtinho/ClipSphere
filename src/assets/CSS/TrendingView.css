@@ -37,3 +37,15 @@
     left: 0;
     width: calc(100% + 11%);
 }
+
+@media (max-width: 480px) {
+
+    .trending-title {
+        margin-top: 35%;
+    }
+
+    .trending-title-alt {
+        display: none;
+    }
+
+}

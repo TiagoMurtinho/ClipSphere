@@ -67,3 +67,41 @@
     height: 70vh;
     width: 100%;
 }
+
+@media (max-width: 480px) {
+
+    .podcast-list {
+        flex-direction: column;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .podcast-card {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 5%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .podcast-card:first-child {
+        margin-top: 15%;
+    }
+
+    .podcast-thumbnail {
+        height: 120px;
+    }
+
+    .podcast-info h3 {
+        font-size: 0.9rem;
+        height: auto;
+    }
+
+    .podcast-info p {
+        font-size: 0.75rem;
+    }
+
+    .podcast-list.shifted {
+        margin-left: 0;
+    }
+
+}

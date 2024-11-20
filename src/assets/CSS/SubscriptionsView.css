@@ -36,3 +36,15 @@
 .subscription-title-alt::after {
     left: 0;
 }
+
+@media (max-width: 480px) {
+
+    .subscription-title {
+        margin-top: 35%;
+    }
+
+    .subscription-title-alt {
+        display: none;
+    }
+
+}

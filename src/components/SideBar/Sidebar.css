@@ -62,3 +62,71 @@
 .sidebar-nav.show-scroll {
     scrollbar-width: thin;
 }
+
+@media (max-width: 480px) {
+
+    .sidebar {
+        position: fixed;
+        width: 50%;
+        top: 0;
+        left: -100%;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .sidebar-toggle {
+        display: block;
+        background-color: transparent;
+        border: none;
+        font-size: 30px;
+        color: black;
+        position: fixed;
+        left: 10px;
+        z-index: 1100;
+    }
+
+    .sidebar.open {
+        left: 65%;
+    }
+
+    .sidebar-closed {
+        width: 0;
+    }
+
+    .sidebar-logo-closed {
+        display: none;
+    }
+
+    .sidebar-nav {
+        display: none;
+    }
+
+    .sidebar-logo-alt {
+        max-width: 60%;
+        height: auto;
+        transition: max-width 0.3s ease;
+    }
+
+    .sidebar-brand-alt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 123px;
+        transition: height 0.3s ease;
+    }
+
+    .sidebar.open .sidebar-nav {
+        display: block;
+    }
+
+}

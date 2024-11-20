@@ -37,3 +37,15 @@
     left: 0;
     width: calc(100% + 2%);
 }
+
+@media (max-width: 480px) {
+
+    .movie-title {
+        margin-top: 35%;
+    }
+
+    .movie-title-alt {
+        display: none;
+    }
+
+}

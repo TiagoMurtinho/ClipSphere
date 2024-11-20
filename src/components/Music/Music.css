@@ -101,3 +101,36 @@
     height: 70vh;
     width: 100%;
 }
+
+@media (max-width: 480px) {
+
+    .music-card {
+        max-width: 100%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .music-thumbnail-container {
+        width: 100px;
+        height: 100px;
+    }
+
+    .music-card-title {
+        font-size: 1em;
+    }
+
+    .music-list {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .music-list:First-child {
+        margin-top: 10%;
+    }
+
+    .music-list > * {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+}

@@ -37,3 +37,15 @@
     left: 0;
     width: calc(100% + 11%);
 }
+
+@media (max-width: 480px) {
+
+    .podcast-title {
+        margin-top: 35%;
+    }
+
+    .podcast-title-alt {
+        display: none;
+    }
+
+}
