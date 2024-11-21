@@ -43,8 +43,13 @@ const shortenedDescription = computed(() => {
 });
 
 const toggleDescription = () => {
+  const isSmallScreen = window.matchMedia("(max-width: 400px)").matches;
   isDescriptionShortened.value = !isDescriptionShortened.value;
-  emit('descriptionToggled', isDescriptionShortened.value ? '30%' : '45%');
+  if (isSmallScreen) {
+    emit('descriptionToggled', isDescriptionShortened.value ? '85%' : '100%');
+  } else {
+    emit('descriptionToggled', isDescriptionShortened.value ? '30%' : '45%');
+  }
 };
 
 const videoUrl = computed(() =>

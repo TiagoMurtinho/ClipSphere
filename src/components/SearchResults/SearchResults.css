@@ -104,3 +104,60 @@
     height: 70vh;
     width: 100%;
 }
+
+@media (max-width: 480px) {
+
+    .search-results-video-info {
+        flex: 1;
+        max-width: 100%;
+        margin-top: 1%;
+    }
+
+    .search-results-container {
+        max-width: 100%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .search-results-video-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .search-results-video-thumbnail {
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+
+    .search-results-video-info h3 {
+        font-size: 1rem;
+    }
+
+    .search-results-video-meta {
+        font-size: 0.75rem;
+    }
+
+    .search-results-video-channel {
+        font-size: 0.75rem;
+    }
+
+    .search-results-video-description {
+        font-size: 0.75rem;
+    }
+
+    .search-results-videos-list:first-child {
+        margin-top: 40%;
+    }
+
+    .search-results-container.shifted {
+        margin-left: 0;
+    }
+
+}

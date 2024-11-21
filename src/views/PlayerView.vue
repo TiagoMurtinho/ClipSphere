@@ -102,9 +102,17 @@ watch(
   () => isSidebarOpen?.value,
   (newVal) => {
     if (newVal) {
-      commentsMarginTop.value = '40%';
+      if (window.matchMedia("(max-width: 400px)").matches) {
+        commentsMarginTop.value = '85%';
+      } else {
+        commentsMarginTop.value = '40%';
+      }
     } else {
-      commentsMarginTop.value = '30%';
+      if (window.matchMedia("(max-width: 400px)").matches) {
+        commentsMarginTop.value = '85%';
+      } else {
+        commentsMarginTop.value = '30%';
+      }
     }
   },
   { immediate: true }

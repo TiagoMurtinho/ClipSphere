@@ -50,3 +50,29 @@ button.video-player-button {
 button.video-player-button:hover {
     background-color: #0056b3;
 }
+
+@media (max-width: 480px) {
+
+    .video-player {
+        height: 200px;
+    }
+
+    .related-videos {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .comment {
+        margin-bottom: 5px;
+    }
+
+    .comment-author-avatar img {
+        width: 25px;
+        height: 25px;
+    }
+
+    button.video-player-button {
+        font-size: 12px;
+    }
+
+}
