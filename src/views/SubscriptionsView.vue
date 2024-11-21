@@ -13,6 +13,7 @@
     </div>
     <SubscriptionFetcher
       v-slot:categories="categories"
+      @openModal="openModal"
     >
       <div
         v-for="(category, idx) in categories"
@@ -35,5 +36,10 @@ import { CIcon } from '@coreui/icons-vue'
 import { cilFeaturedPlaylist } from '@coreui/icons'
 import { inject } from 'vue'
 
+const emit = defineEmits(['openModal']);
 const isSidebarOpen = inject('isSidebarOpen');
+
+const openModal = () => {
+  emit('openModal');
+};
 </script>

@@ -3,6 +3,7 @@
     <SubscriptionList
       v-if="channels && channels.length > 0"
       :channels="channels"
+      @openModal="openModal"
     />
     <NoResults
       v-else
@@ -25,6 +26,7 @@ import youtube from '../../api';
 import { VueSpinnerBars } from 'vue3-spinners'
 import NoResults from '@/components/NoData/NoDataComponent.vue'
 
+const emit = defineEmits(['openModal']);
 const channels = ref([]);
 const loading = ref(true);
 const error = ref(null);
@@ -64,6 +66,9 @@ const fetchPopularChannels = async () => {
   }
 };
 
+const openModal = () => {
+  emit('openModal');
+};
 
 onMounted(() => {
   fetchPopularChannels();

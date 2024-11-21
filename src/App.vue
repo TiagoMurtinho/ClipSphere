@@ -13,6 +13,7 @@
     <router-view
       :categoryId="currentCategoryId"
       :selectedCategories="selectedCategories"
+      @openModal="openLoginModal"
     />
     <BackToTop />
     <LoginModal

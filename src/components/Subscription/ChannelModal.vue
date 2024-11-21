@@ -23,8 +23,15 @@
             <button
               class="subscribe-button"
               @click="subscribeToChannel"
+              :class="{ subscribed: isSubscribed }"
             >
-              Subscrever
+               <span v-if="isSubscribed">
+                  Subscrito
+                 <CIcon :icon="cilCheck" />
+               </span>
+               <span v-else>
+                  Subscrever
+               </span>
             </button>
           </div>
         </div>
@@ -54,12 +61,13 @@
 
 <script setup>
 import './Subscription.css'
-import { getCurrentInstance, onUnmounted, watch } from 'vue'
+import { getCurrentInstance, inject, onUnmounted, ref, watch } from 'vue'
 import { CIcon } from '@coreui/icons-vue'
-import { cilX } from '@coreui/icons'
+import { cilX, cilCheck } from '@coreui/icons'
 import { useRouter } from 'vue-router'
 
-const emit = defineEmits(['close']);
+const isAuthenticated = inject('isAuthenticated');
+const emit = defineEmits(['close', 'openModal', 'goToPlayerView']);
 
 const props = defineProps({
   visible: {
@@ -84,8 +92,43 @@ const closeModal = () => {
 
 const { proxy } = getCurrentInstance();
 const swal = proxy.$swal;
+const isSubscribed = ref(true);
 
 const subscribeToChannel = () => {
+
+  if (!isAuthenticated.value) {
+    emit('openModal');
+    return;
+  }
+
+  const channelId = props.channel?.id?.channelId || props.channel?.id;
+  if (!channelId) return;
+
+  const subscribedChannels = JSON.parse(localStorage.getItem('subscribedChannels')) || [];
+  if (subscribedChannels.includes(channelId)) {
+
+    const updatedChannels = subscribedChannels.filter(channel => channel !== channelId);
+    localStorage.setItem('subscribedChannels', JSON.stringify(updatedChannels));
+
+    isSubscribed.value = false;
+
+    swal({
+      toast: true,
+      position: 'top-end',
+      icon: 'info',
+      title: `Você se desinscreveu do canal: ${props.channel?.snippet.channelTitle}`,
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+    });
+    return;
+  }
+
+  const updatedChannels = [...subscribedChannels, channelId];
+  localStorage.setItem('subscribedChannels', JSON.stringify(updatedChannels));
+
+  isSubscribed.value = true;
+
   swal({
     toast: true,
     position: 'top-end',
@@ -95,6 +138,22 @@ const subscribeToChannel = () => {
     timer: 3000,
     timerProgressBar: true,
   });
+
+  isSubscribed.value = true;
+};
+
+const updateSubscriptionStatus = () => {
+
+  const channelId = props.channel?.id?.channelId || props.channel?.id;
+
+  if (!channelId) {
+    isSubscribed.value = false;
+    return;
+  }
+
+  const subscribedChannels = JSON.parse(localStorage.getItem('subscribedChannels')) || [];
+
+  isSubscribed.value = subscribedChannels.includes(channelId);
 };
 
 const goToPlayerView = (videoId) => {
@@ -114,6 +173,7 @@ watch(
   (newValue) => {
     if (newValue) {
       blockScroll();
+      updateSubscriptionStatus();
     } else {
       releaseScroll();
     }
