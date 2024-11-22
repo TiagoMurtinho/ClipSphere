@@ -1,10 +1,9 @@
 <template>
   <div class="subscription-list">
 
-    <div v-if="isAuthenticated === true">
+    <div v-if="isAuthenticated === true && subscribedChannelsData.length > 0">
       <h4 class="subscribed-channel-h4">Canais subscritos:</h4>
       <ChannelImageRow
-        v-if="subscribedChannelsData.length > 0"
         :channels="subscribedChannelsData"
         @channelClick="openChannelModal"
       />
@@ -27,7 +26,7 @@
     </div>
 
     <div
-      v-if="channels && channels.length > 0"
+      v-if="channels && channels.length > 0 && subscribedChannelsData.length === 0"
       class="subscription-list-channel-grid"
       :class="{ shifted: isSidebarOpen }"
     >
@@ -41,7 +40,10 @@
       </div>
     </div>
 
-    <NoResults v-else message="Nenhum canal encontrado!" />
+    <NoResults
+      v-else-if="channels.length === 0 && subscribedChannelsData.length === 0"
+      message="Nenhum canal encontrado!"
+    />
 
     <ChannelModal
       v-if="selectedChannel"

@@ -298,9 +298,7 @@
     gap: 1rem;
     overflow-x: auto;
     padding: 1rem 0;
-    margin-left: 9%;
-    margin-top: 1%;
-    margin-bottom: -55px;
+    margin: 1% 9% -55px;
 }
 
 .channel-image-wrapper {
