@@ -18,14 +18,14 @@
             class="subscription-channel-thumbnail"
           />
           <div class="subscription-channel-text">
-            <h2>{{ channel?.snippet.channelTitle || 'Canal desconhecido' }}</h2>
+            <h2>{{ channel?.snippet.channelTitle || channel?.snippet.localized.title || 'Canal desconhecido' }}</h2>
             <p class="subscription-channel-description">{{ channel?.snippet.description || 'Descrição não disponível.' }}</p>
             <button
               class="subscribe-button"
               @click="subscribeToChannel"
-              :class="{ subscribed: isSubscribed }"
+              :class="{ subscribed: isSubscribed && isAuthenticated }"
             >
-               <span v-if="isSubscribed">
+               <span v-if="isSubscribed && isAuthenticated === true">
                   Subscrito
                  <CIcon :icon="cilCheck" />
                </span>

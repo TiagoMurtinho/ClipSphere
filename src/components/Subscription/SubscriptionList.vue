@@ -1,23 +1,33 @@
 <template>
   <div class="subscription-list">
 
-    <div
-      v-if="allVideos.length > 0"
-      class="subscription-list-video-grid"
-      :class="{ shifted: isSidebarOpen }"
-    >
-      <div class="subscription-list-video-row">
-        <div
-          v-for="(video, videoIdx) in allVideos"
-          :key="videoIdx"
-        >
-          <SubscribedVideoCard :video="video" />
+    <div v-if="isAuthenticated === true">
+      <h4 class="subscribed-channel-h4">Canais subscritos:</h4>
+      <ChannelImageRow
+        v-if="subscribedChannelsData.length > 0"
+        :channels="subscribedChannelsData"
+        @channelClick="openChannelModal"
+      />
+
+      <div
+        v-if="allVideos.length > 0"
+        class="subscription-list-video-grid"
+        :class="{ shifted: isSidebarOpen }"
+      >
+        <h4 class="subscribed-channel-videos-h4">Vídeos Recentes:</h4>
+        <div class="subscription-list-video-row">
+          <div
+            v-for="(video, videoIdx) in allVideos"
+            :key="videoIdx"
+          >
+            <SubscribedVideoCard :video="video" />
+          </div>
         </div>
       </div>
     </div>
 
     <div
-      v-else-if="channels && channels.length > 0"
+      v-if="channels && channels.length > 0"
       class="subscription-list-channel-grid"
       :class="{ shifted: isSidebarOpen }"
     >
@@ -37,7 +47,7 @@
       v-if="selectedChannel"
       :visible="isModalVisible"
       :channel="selectedChannel"
-      :videos="videosByChannel[selectedChannel.id.channelId] || []"
+      :videos="videosByChannel[selectedChannel.id.channelId] || videosByChannel[selectedChannel.id] || []"
       @close="closeModal"
       @openModal="openModal"
     />
@@ -52,9 +62,11 @@ import NoResults from '@/components/NoData/NoDataComponent.vue';
 import ChannelModal from './ChannelModal.vue';
 import youtube from '../../api';
 import SubscribedVideoCard from '@/components/Subscription/SubscribedVideoCard.vue'
+import ChannelImageRow from '@/components/Subscription/ChannelImageRow.vue'
 
 const emit = defineEmits(['openModal']);
 const isSidebarOpen = inject('isSidebarOpen');
+const isAuthenticated = inject('isAuthenticated');
 
 defineProps({
   channels: {
@@ -78,8 +90,9 @@ const allVideos = computed(() => {
 });
 
 const openChannelModal = async (channel) => {
+
   selectedChannel.value = channel;
-  const channelId = selectedChannel.value?.id?.channelId;
+  const channelId = typeof channel.id === 'string' ? channel.id : channel.id?.channelId;
 
   if (channelId) {
     await fetchChannelVideos(channelId);
@@ -134,6 +147,38 @@ onMounted(() => {
     subscribedChannels.forEach(async (channelId) => {
       await fetchChannelVideos(channelId);
     });
+  }
+});
+
+const subscribedChannelsData = ref([]);
+
+onMounted(async () => {
+  if (subscribedChannels.length > 0) {
+
+    const fetchChannelDataPromises = subscribedChannels.map(async (channelId) => {
+      const storedChannel = localStorage.getItem(`channel_${channelId}`);
+      if (storedChannel) {
+        return JSON.parse(storedChannel);
+      } else {
+        try {
+          const response = await youtube.get('/channels', {
+            params: {
+              part: 'snippet',
+              id: channelId,
+            },
+          });
+          const channelData = response.data.items[0];
+          localStorage.setItem(`channel_${channelId}`, JSON.stringify(channelData));
+          return channelData;
+        } catch (error) {
+          console.error(`Erro ao buscar dados do canal ${channelId}:`, error.response?.data || error.message);
+        }
+      }
+    });
+
+    const channelsData = await Promise.all(fetchChannelDataPromises);
+    subscribedChannelsData.value = channelsData.filter(Boolean);
+
   }
 });
 </script>

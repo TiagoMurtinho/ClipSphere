@@ -293,6 +293,41 @@
     margin: 0;
 }
 
+.channel-images-row {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    margin-left: 9%;
+    margin-top: 1%;
+    margin-bottom: -55px;
+}
+
+.channel-image-wrapper {
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.channel-image {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.channel-image:hover {
+    transform: scale(1.1);
+}
+
+.subscribed-channel-h4 {
+    margin-left: 8.5%;
+}
+
+.subscribed-channel-videos-h4 {
+    margin-right: 78%;
+}
+
 @media (max-width: 480px) {
 
     .subscription-modal-content {
