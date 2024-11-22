@@ -116,7 +116,7 @@ const subscribeToChannel = () => {
       toast: true,
       position: 'top-end',
       icon: 'info',
-      title: `Você se desinscreveu do canal: ${props.channel?.snippet.channelTitle}`,
+      title: `Você se desinscreveu do canal: ${props.channel?.snippet.channelTitle ?? props.channel?.snippet.title ?? 'Canal desconhecido'}`,
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,
