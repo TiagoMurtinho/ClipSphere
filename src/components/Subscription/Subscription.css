@@ -257,7 +257,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    justify-content: left;
+    margin-left: 5%;
 }
 
 .subscribed-channel-video-card {
@@ -326,7 +327,26 @@
     margin-right: 78%;
 }
 
+.subscription-list-channel-image-grid.shifted {
+    margin-left: 10%;
+    transition: margin-left 0.3s ease;
+}
+
+.subscription-list-video-grid.shifted {
+    margin-left: 5.5%;
+    transition: margin-left 0.3s ease;
+}
+
 @media (max-width: 480px) {
+
+    .subscribed-channel-h4 {
+        margin-top: 10%;
+    }
+
+    .subscribed-channel-videos-h4 {
+        margin-left: 14%;
+        margin-top: 10%;
+    }
 
     .subscription-modal-content {
         width: 90%;

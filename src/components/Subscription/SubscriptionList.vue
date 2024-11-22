@@ -1,7 +1,11 @@
 <template>
   <div class="subscription-list">
 
-    <div v-if="isAuthenticated === true && subscribedChannelsData.length > 0">
+    <div
+      v-if="isAuthenticated === true && subscribedChannelsData.length > 0"
+      class="subscription-list-channel-image-grid"
+      :class="{ shifted: isSidebarOpen }"
+    >
       <h4 class="subscribed-channel-h4">Canais subscritos:</h4>
       <ChannelImageRow
         :channels="subscribedChannelsData"
@@ -26,7 +30,7 @@
     </div>
 
     <div
-      v-if="channels && channels.length > 0 && subscribedChannelsData.length === 0"
+      v-if="channels && channels.length > 0 && subscribedChannelsData.length === 0 || isAuthenticated === false"
       class="subscription-list-channel-grid"
       :class="{ shifted: isSidebarOpen }"
     >
