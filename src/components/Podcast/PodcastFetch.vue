@@ -12,7 +12,10 @@
       v-if="loading"
       class="spinner-container"
     >
-      <VueSpinnerBars size="40" color="blue" />
+      <VueSpinnerBars
+        size="40"
+        color="blue"
+      />
     </div>
   </div>
 </template>

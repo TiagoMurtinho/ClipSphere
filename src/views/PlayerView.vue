@@ -1,5 +1,8 @@
 <template>
-  <div class="player-view" v-if="video">
+  <div
+    class="player-view"
+    v-if="video"
+  >
     <div class="player-content">
       <div
         class="player-main-column"

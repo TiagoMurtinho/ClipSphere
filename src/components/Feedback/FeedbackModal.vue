@@ -78,7 +78,7 @@ function submitFeedback() {
     Swal.fire({
       icon: 'warning',
       title: 'Atenção',
-      text: 'Por favor, insira um feedback.',
+      text: 'Por favor, insira um feedback!',
       confirmButtonText: 'OK',
     });
   }

@@ -1,5 +1,8 @@
 <template>
-  <div v-if="channels.length > 0" class="channel-images-row">
+  <div
+    v-if="channels.length > 0"
+    class="channel-images-row"
+  >
     <div
       v-for="channel in channels"
       :key="channel.id.channelId"

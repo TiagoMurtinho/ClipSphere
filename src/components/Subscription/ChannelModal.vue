@@ -1,5 +1,8 @@
 <template>
-  <div v-if="visible" class="subscription-modal-overlay">
+  <div
+    v-if="visible"
+    class="subscription-modal-overlay"
+  >
     <div class="subscription-modal-content">
       <button
         @click="closeModal"
