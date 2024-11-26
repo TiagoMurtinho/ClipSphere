@@ -20,8 +20,9 @@
         <h4 class="subscribed-channel-videos-h4">Vídeos Recentes:</h4>
         <div class="subscription-list-video-row">
           <div
-            v-for="(video, videoIdx) in allVideos"
-            :key="videoIdx"
+            v-for="video in allVideos"
+            :key="video.id.videoId"
+            @click="goToPlayerView(video.id.videoId)"
           >
             <SubscribedVideoCard :video="video" />
           </div>
@@ -69,6 +70,7 @@ import ChannelModal from './ChannelModal.vue';
 import youtube from '../../api';
 import SubscribedVideoCard from '@/components/Subscription/SubscribedVideoCard.vue'
 import ChannelImageRow from '@/components/Subscription/ChannelImageRow.vue'
+import router from '@/router/index.js'
 
 const emit = defineEmits(['openModal']);
 const isSidebarOpen = inject('isSidebarOpen');
@@ -85,6 +87,10 @@ const isModalVisible = ref(false);
 const selectedChannel = ref(null);
 const videosByChannel = ref({});
 const subscribedChannels = JSON.parse(localStorage.getItem('subscribedChannels')) || [];
+
+const goToPlayerView = (videoId) => {
+  router.push(`/player/${videoId}`)
+};
 
 const allVideos = computed(() => {
   let videos = [];

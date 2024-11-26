@@ -35,12 +35,17 @@
         />
       </div>
     </div>
-    <div class="login-form-check mb-3">
+    <div class="login-form-check">
       <CFormCheck
         id="remember"
         v-model="rememberMe"
       />
-      <CFormLabel for="remember">Lembrar-me</CFormLabel>
+      <CFormLabel
+        class="ms-1"
+        for="remember"
+      >
+        Lembrar-me
+      </CFormLabel>
     </div>
     <div class="google-login">
       <button
