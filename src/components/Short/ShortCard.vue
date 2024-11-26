@@ -4,10 +4,11 @@
     class="shorts-card"
   >
     <div class="short-thumbnail">
-      <img
-        :src="video.snippet.thumbnails.medium.url"
-        alt="Short thumbnail"
-      />
+      <iframe
+        :src="videoUrl"
+        allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      ></iframe>
     </div>
 
     <div class="short-info">
@@ -27,6 +28,10 @@ const props = defineProps({
     default: () => ({})
   },
 });
+
+const videoUrl = computed(() =>
+  props.video ? `https://www.youtube.com/embed/${props.video.id}` : ''
+);
 
 const truncatedTitle = computed(() => {
   return props.video.snippet.title.length > 40
