@@ -16,7 +16,8 @@
         <div class="subscription-channel-info">
 
           <img
-            :src="channel.snippet.thumbnails.medium.url"
+            v-if="channel.snippet.thumbnails && channel.snippet.thumbnails.default && channel.snippet.thumbnails.default.url"
+            :src="channel.snippet.thumbnails.default.url"
             alt="Channel Thumbnail"
             class="subscription-channel-thumbnail"
           />
