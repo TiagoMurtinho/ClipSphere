@@ -6,21 +6,38 @@
     <div class="popover-content">
       <h4>Partilhar</h4>
       <div class="popover-social-share-buttons">
-        <button class="popover-social-btn">
+        <a
+          class="popover-social-btn"
+          :href="shareLinks.facebook"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i class="bi bi-facebook"></i> Facebook
-        </button>
-        <button class="popover-social-btn">
-          <i class="bi bi-twitter-x"></i> Twitter-x
-        </button>
-        <button class="popover-social-btn">
+        </a>
+        <a
+          class="popover-social-btn"
+          :href="shareLinks.twitter"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="bi bi-twitter"></i> Twitter-x
+        </a>
+        <a
+          class="popover-social-btn"
+          :href="shareLinks.whatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i class="bi bi-whatsapp"></i> WhatsApp
-        </button>
-        <button class="popover-social-btn">
+        </a>
+        <a
+          class="popover-social-btn"
+          :href="shareLinks.linkedin"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i class="bi bi-linkedin"></i> LinkedIn
-        </button>
-        <button class="popover-social-btn">
-          <i class="bi bi-instagram"></i> Instagram
-        </button>
+        </a>
       </div>
     </div>
     <div class="popover-arrow"></div>
@@ -29,7 +46,7 @@
 
 <script setup>
 import './Popover.css'
-import { ref } from 'vue';
+import { computed, ref } from 'vue'
 
 const visible = ref(false);
 
@@ -38,4 +55,18 @@ defineExpose({
     visible.value = !visible.value;
   },
 });
+
+const props = defineProps({
+  shortId: {
+    type: String,
+    required: true,
+  },
+});
+
+const shareLinks = computed(() => ({
+  facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://www.youtube.com/shorts/' + props.shortId)}`,
+  twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent('https://www.youtube.com/shorts/' + props.shortId)}`,
+  whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent('https://www.youtube.com/shorts/' + props.shortId)}`,
+  linkedin: `https://www.linkedin.com/shareArticle?url=${encodeURIComponent('https://www.youtube.com/shorts/' + props.shortId)}`,
+}));
 </script>

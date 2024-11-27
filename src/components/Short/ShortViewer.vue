@@ -20,13 +20,21 @@
       :class="{ 'short-interaction-fade': showButtons }"
     >
       <div>
-        <button class="short-button short-like-btn">
+        <button
+          class="short-button short-like-btn"
+          :class="{ 'short-active-button': activeInteractionButton === 'like' }"
+          @click="handleActiveButton('like')"
+        >
           <i class="bi bi-hand-thumbs-up-fill"></i>
         </button>
         <span class="short-count">{{ formatCount(shorts[currentIndex]?.statistics?.likeCount || 0) }}</span>
       </div>
       <div>
-        <button class="short-button short-dislike-btn">
+        <button
+          class="short-button short-dislike-btn"
+          :class="{ 'short-active-button': activeInteractionButton === 'dislike' }"
+          @click="handleActiveButton('dislike')"
+        >
           <i class="bi bi-hand-thumbs-down-fill"></i>
         </button>
         <span class="short-count">Não Gosto</span>
@@ -45,7 +53,10 @@
           <i class="bi bi-share-fill"></i>
         </button>
         <span class="short-count">Partilhar</span>
-        <SocialSharePopover ref="sharePopover" />
+        <SocialSharePopover
+          ref="sharePopover"
+          :shortId="props.shorts[currentIndex]?.id"
+        />
       </div>
 
     </div>
@@ -82,6 +93,16 @@ const props = defineProps({
     required: true,
   },
 });
+
+const activeInteractionButton = ref(null);
+
+const handleActiveButton = (buttonType) => {
+  if (activeInteractionButton.value === buttonType) {
+    activeInteractionButton.value = null;
+  } else {
+    activeInteractionButton.value = buttonType;
+  }
+};
 
 const showButtons = ref(true);
 const currentIndex = ref(0);
@@ -134,7 +155,8 @@ function formatCount(count) {
 const sharePopover = ref(null);
 const isPopoverOpen = ref(false);
 
-const togglePopover = () => {
+const togglePopover = (event) => {
+  event.stopPropagation();
   if (sharePopover.value) {
     isPopoverOpen.value = !isPopoverOpen.value;
     sharePopover.value.togglePopover();
@@ -148,7 +170,7 @@ const handleClickOutside = (event) => {
     !sharePopover.value.$el.contains(event.target) &&
     !event.target.closest('.share-btn')
   ) {
-    togglePopover();
+    togglePopover(event);
   }
 };
 
