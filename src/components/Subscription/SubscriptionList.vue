@@ -183,7 +183,7 @@ onMounted(async () => {
           localStorage.setItem(`channel_${channelId}`, JSON.stringify(channelData));
           return channelData;
         } catch (error) {
-          console.error(`Erro ao buscar dados do canal ${channelId}:`, error.response?.data || error.message);
+          console.warn(`Erro ao buscar dados do canal ${channelId}:`, error.response?.data || error.message);
         }
       }
     });

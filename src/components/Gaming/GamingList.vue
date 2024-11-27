@@ -2,7 +2,7 @@
   <div
     v-if="videos && videos.length > 0"
     class="gaming-list"
-    :class="{ shifted: isSidebarOpen}"
+    :class="{ shifted: isSidebarOpen }"
   >
     <GamingCard
       v-for="video in videos"
